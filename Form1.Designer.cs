@@ -43,6 +43,7 @@
             this.btnMakeTextBox = new System.Windows.Forms.Button();
             this.txtData = new System.Windows.Forms.TextBox();
             this.btnGetData = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // Start
@@ -176,12 +177,20 @@
             this.btnGetData.UseVisualStyleBackColor = true;
             this.btnGetData.Click += new System.EventHandler(this.btnGetData_Click);
             // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(732, 23);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(151, 22);
+            this.textBox1.TabIndex = 15;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(907, 593);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.btnGetData);
             this.Controls.Add(this.txtData);
             this.Controls.Add(this.btnMakeTextBox);
@@ -222,6 +231,7 @@
         private System.Windows.Forms.Button btnMakeTextBox;
         private System.Windows.Forms.TextBox txtData;
         private System.Windows.Forms.Button btnGetData;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }
 
