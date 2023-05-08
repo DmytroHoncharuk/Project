@@ -33,13 +33,14 @@ namespace TestForm2
                 textBox.Size = new Size(textBoxWidth, textBoxHeight);
                 parentForm.textBoxes.Add(textBox);
                 parentForm.Controls.Add(textBox);
+                
             }
         }
         public void LableMake(int numberOflable)
         {
             int startX = 35;
             int startY = 495;
-            int textBoxWidth = 100;
+            
             int textBoxHeight = 20;
             for (int i = 0; i < numberOflable; i++)
             {
