@@ -42,8 +42,7 @@ namespace TestForm2
         {
             get;
             private set;
-        } = new string[] {DriveService.Scope.Drive,
-        SheetsService.Scope.Spreadsheets};
+        } = new string[] {DriveService.Scope.Drive, SheetsService.Scope.Spreadsheets};
 
         internal void DisplayStudentFromGroup(string group, ref TextBox textBox, List<List<string>> listOfStudent)
         {
@@ -61,9 +60,6 @@ namespace TestForm2
         {
             var range = this.sheetName + "!" + cellName + ":" + cellName;
             var request = this.sheetService.Spreadsheets.Values.Get(spreadsheetId: this.sheetFileId, range: range);
-           
-
-
             var response = request.Execute();
             return response.Values?.First()?.First()?.ToString();
         }
@@ -117,18 +113,17 @@ namespace TestForm2
             //        new FileDataStore(credentionalpath, true));
             //}
 
-            using (var stream =
-               new FileStream("client_secrets.json", FileMode.Open, FileAccess.Read))
+            using (var stream = new FileStream("client_secrets.json", FileMode.Open, FileAccess.Read))
             {
                 // Файл credentials.json содержит учетные данные OAuth 2.0, полученные от Google API Console.
                 // После получения учетных данных с помощью Google API Console сохраните их в файле credentials.json.
                 string credPath = "token.json";
                 this.credentials = GoogleWebAuthorizationBroker.AuthorizeAsync(
-                    GoogleClientSecrets.Load(stream).Secrets,
-                    this.Scopes,
-                    "user",
-                    CancellationToken.None,
-                    new NullDataStore()).Result;
+                    clientSecrets: GoogleClientSecrets.Load(stream).Secrets,
+                    scopes: this.Scopes,
+                    user: "user",
+                    taskCancellationToken: CancellationToken.None,
+                    new NullDataStore()).Result; 
                 Console.WriteLine("Credential file saved to: " + credPath);
             }
 
@@ -152,7 +147,7 @@ namespace TestForm2
             {
                 if (file.Name == this.sheetFileName)
                 {
-                    this.sheetFileId = file.Id;
+                    this.sheetFileId = file.Id; //отримуємо ID файлу
                     break;
                 }
             }
