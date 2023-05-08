@@ -73,7 +73,6 @@ namespace TestForm2
             var request = this.sheetService.Spreadsheets.Values.Get(spreadsheetId: this.sheetFileId, range: range1);
             var response = request.Execute();
 
-
             List<object> StudentsGroup = response.Values.SelectMany(x => x).ToList();
             List<string> Student_Group_As_String = StudentsGroup.ConvertAll(x => x.ToString());
             ////////////////////////////////////////////////////////////////
@@ -104,19 +103,8 @@ namespace TestForm2
         {
             string credentionalpath = Path.Combine(Environment.CurrentDirectory, ".credentials", ApplicationName);
 
-            //new FileDataStore(credentionalpath, true).ClearAsync().Wait();
-
-            //using (var strm = new FileStream("client_secrets.json", FileMode.Open, FileAccess.Read))
-            //{
-            //    this.credentials = await GoogleWebAuthorizationBroker.AuthorizeAsync(clientSecrets: GoogleClientSecrets.FromStream(strm).Secrets,scopes: this.Scopes, 
-            //        user: "user4", taskCancellationToken: CancellationToken.None, 
-            //        new FileDataStore(credentionalpath, true));
-            //}
-
             using (var stream = new FileStream("client_secrets.json", FileMode.Open, FileAccess.Read))
             {
-                // Файл credentials.json содержит учетные данные OAuth 2.0, полученные от Google API Console.
-                // После получения учетных данных с помощью Google API Console сохраните их в файле credentials.json.
                 string credPath = "token.json";
                 this.credentials = GoogleWebAuthorizationBroker.AuthorizeAsync(
                     clientSecrets: GoogleClientSecrets.Load(stream).Secrets,
@@ -126,9 +114,6 @@ namespace TestForm2
                     new NullDataStore()).Result; 
                 Console.WriteLine("Credential file saved to: " + credPath);
             }
-
-
-
 
             this.driveService = new DriveService(new Google.Apis.Services.BaseClientService.Initializer()
             {

@@ -49,22 +49,8 @@ namespace TestForm2
 
         private void BtnGetGroup_Click(object sender, EventArgs e)
         {
-
-
             var result = this.helper.GetStudent();
             this.helper.DisplayStudentFromGroup(group: txtGetGroup.Text, textBox: ref txtStudents, listOfStudent: result);
-
-
-
-
-            //foreach (var item in result)
-            //{
-            //    if (item.ToString() == txtGetGroup.Text)
-            //    {
-            //        txtStudents.Text += item.ToString() + Environment.NewLine;
-            //    }
-            //}
-
         }
 
         private void btnMakeTextBox_Click(object sender, EventArgs e)
@@ -87,6 +73,21 @@ namespace TestForm2
 
                 txtData.Text = textBoxes[0].Text;
             }
+        }
+
+        private void txtNameSheets_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtStudents_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
