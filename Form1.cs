@@ -88,5 +88,10 @@ namespace TestForm2
                 txtData.Text = textBoxes[0].Text;
             }
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

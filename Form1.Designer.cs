@@ -43,11 +43,12 @@
             this.btnMakeTextBox = new System.Windows.Forms.Button();
             this.txtData = new System.Windows.Forms.TextBox();
             this.btnGetData = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // Start
             // 
-            this.Start.Location = new System.Drawing.Point(29, 23);
+            this.Start.Location = new System.Drawing.Point(35, 12);
             this.Start.Name = "Start";
             this.Start.Size = new System.Drawing.Size(158, 48);
             this.Start.TabIndex = 0;
@@ -135,7 +136,7 @@
             // 
             // txtNameSheets
             // 
-            this.txtNameSheets.Location = new System.Drawing.Point(193, 23);
+            this.txtNameSheets.Location = new System.Drawing.Point(360, 25);
             this.txtNameSheets.Name = "txtNameSheets";
             this.txtNameSheets.Size = new System.Drawing.Size(515, 22);
             this.txtNameSheets.TabIndex = 10;
@@ -176,12 +177,24 @@
             this.btnGetData.UseVisualStyleBackColor = true;
             this.btnGetData.Click += new System.EventHandler(this.btnGetData_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("TT Firs Neue", 10F);
+            this.label1.Location = new System.Drawing.Point(215, 25);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(128, 22);
+            this.label1.TabIndex = 15;
+            this.label1.Text = " Назва таблиці";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(907, 593);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.btnGetData);
             this.Controls.Add(this.txtData);
             this.Controls.Add(this.btnMakeTextBox);
@@ -224,6 +237,7 @@
         private System.Windows.Forms.Button btnMakeTextBox;
         private System.Windows.Forms.TextBox txtData;
         private System.Windows.Forms.Button btnGetData;
+        private System.Windows.Forms.Label label1;
     }
 }
 
