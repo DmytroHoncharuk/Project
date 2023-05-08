@@ -45,10 +45,11 @@ namespace TestForm2
             {
                 Label label = new Label();
                 label.Location = new Point(startX, startY + i * (textBoxHeight + 5));
-                label.Text = i +1 + " тест"; 
+                string text = (i + 1) + " тест";
+                label.Text = text;
 
 
-               
+                parentForm.Controls.Add(label);
             }
         }
     }
