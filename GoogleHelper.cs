@@ -60,9 +60,6 @@ namespace TestForm2
         {
             var range = this.sheetName + "!" + cellName + ":" + cellName;
             var request = this.sheetService.Spreadsheets.Values.Get(spreadsheetId: this.sheetFileId, range: range);
-           
-
-
             var response = request.Execute();
             return response.Values?.First()?.First()?.ToString();
         }
@@ -121,12 +118,12 @@ namespace TestForm2
                 // Файл credentials.json содержит учетные данные OAuth 2.0, полученные от Google API Console.
                 // После получения учетных данных с помощью Google API Console сохраните их в файле credentials.json.
                 string credPath = "token.json";
-                this.credentials = GoogleWebAuthorizationBroker.AuthorizeAsync( //а тут немає await
+                this.credentials = GoogleWebAuthorizationBroker.AuthorizeAsync(
                     clientSecrets: GoogleClientSecrets.Load(stream).Secrets,
                     scopes: this.Scopes,
                     user: "user",
                     taskCancellationToken: CancellationToken.None,
-                    new NullDataStore()).Result; //чого тут не FileDataStore(credentialpath, true)?
+                    new NullDataStore()).Result; 
                 Console.WriteLine("Credential file saved to: " + credPath);
             }
 
