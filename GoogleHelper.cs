@@ -68,8 +68,6 @@ namespace TestForm2
         {
             var range1 = this.sheetName + "!" + "E" + ":" + "E";
             var range2 = this.sheetName + "!" + "C" + ":" + "C";
-
-
             var request = this.sheetService.Spreadsheets.Values.Get(spreadsheetId: this.sheetFileId, range: range1);
             var response = request.Execute();
 
