@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Toolkit.Uwp.Notifications;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -78,9 +79,20 @@ namespace TestForm2
         private void btnMakeTextBox_Click(object sender, EventArgs e)
         {
             int number = int.Parse(txtNumOfTextBox.Text);
-            Maker.TexBoxMake(number); 
-            Maker.LableMake(number);
-            btnGetData.Enabled = true;
+            if (number <= 20)
+            {
+                Maker.MakeInputBox(number, LblNumberTest.Location.X, LblNumberTest.Location.Y);
+
+                btnGetData.Enabled = true;
+            }
+            else
+            {
+                txtNumOfTextBox.BackColor = Color.LightCoral;
+                var notify = new ToastContentBuilder();
+                notify.AddText("Кількість тестів не може перевищувати 20");
+                notify.Show();
+            }
+            
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -100,6 +112,21 @@ namespace TestForm2
         private void label1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void txtNameSheets_TextChanged(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(this.Text))
+            {
+                Start.Enabled = true;
+            }
+            
+
+        }
+
+        private void txtNumOfTextBox_TextChanged(object sender, EventArgs e)
+        {
+            this.BackColor = Color.White; 
         }
     }
 }

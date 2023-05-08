@@ -44,10 +44,12 @@
             this.txtData = new System.Windows.Forms.TextBox();
             this.btnGetData = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.LblNumberTest = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // Start
             // 
+            this.Start.Enabled = false;
             this.Start.Location = new System.Drawing.Point(35, 12);
             this.Start.Name = "Start";
             this.Start.Size = new System.Drawing.Size(158, 48);
@@ -140,20 +142,23 @@
             this.txtNameSheets.Name = "txtNameSheets";
             this.txtNameSheets.Size = new System.Drawing.Size(515, 22);
             this.txtNameSheets.TabIndex = 10;
+            this.txtNameSheets.TextChanged += new System.EventHandler(this.txtNameSheets_TextChanged);
             // 
             // txtNumOfTextBox
             // 
-            this.txtNumOfTextBox.Location = new System.Drawing.Point(35, 495);
+            this.txtNumOfTextBox.BackColor = System.Drawing.Color.White;
+            this.txtNumOfTextBox.Location = new System.Drawing.Point(160, 503);
             this.txtNumOfTextBox.Name = "txtNumOfTextBox";
             this.txtNumOfTextBox.Size = new System.Drawing.Size(151, 22);
             this.txtNumOfTextBox.TabIndex = 11;
+            this.txtNumOfTextBox.TextChanged += new System.EventHandler(this.txtNumOfTextBox_TextChanged);
             // 
             // btnMakeTextBox
             // 
             this.btnMakeTextBox.Enabled = false;
-            this.btnMakeTextBox.Location = new System.Drawing.Point(193, 495);
+            this.btnMakeTextBox.Location = new System.Drawing.Point(317, 499);
             this.btnMakeTextBox.Name = "btnMakeTextBox";
-            this.btnMakeTextBox.Size = new System.Drawing.Size(151, 22);
+            this.btnMakeTextBox.Size = new System.Drawing.Size(151, 31);
             this.btnMakeTextBox.TabIndex = 12;
             this.btnMakeTextBox.Text = "Make TextBox";
             this.btnMakeTextBox.UseVisualStyleBackColor = true;
@@ -171,7 +176,7 @@
             this.btnGetData.Enabled = false;
             this.btnGetData.Location = new System.Drawing.Point(529, 504);
             this.btnGetData.Name = "btnGetData";
-            this.btnGetData.Size = new System.Drawing.Size(151, 22);
+            this.btnGetData.Size = new System.Drawing.Size(151, 28);
             this.btnGetData.TabIndex = 14;
             this.btnGetData.Text = "Get Data";
             this.btnGetData.UseVisualStyleBackColor = true;
@@ -183,10 +188,20 @@
             this.label1.Font = new System.Drawing.Font("TT Firs Neue", 10F);
             this.label1.Location = new System.Drawing.Point(215, 25);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(128, 22);
+            this.label1.Size = new System.Drawing.Size(123, 22);
             this.label1.TabIndex = 15;
-            this.label1.Text = " Назва таблиці";
+            this.label1.Text = "Назва таблиці";
             this.label1.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // LblNumberTest
+            // 
+            this.LblNumberTest.AutoSize = true;
+            this.LblNumberTest.Font = new System.Drawing.Font("TT Firs Neue", 10F);
+            this.LblNumberTest.Location = new System.Drawing.Point(26, 504);
+            this.LblNumberTest.Name = "LblNumberTest";
+            this.LblNumberTest.Size = new System.Drawing.Size(133, 22);
+            this.LblNumberTest.TabIndex = 16;
+            this.LblNumberTest.Text = "Кількість тестів";
             // 
             // Form1
             // 
@@ -194,6 +209,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(907, 593);
+            this.Controls.Add(this.LblNumberTest);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnGetData);
             this.Controls.Add(this.txtData);
@@ -210,7 +226,7 @@
             this.Controls.Add(this.txtCellValue);
             this.Controls.Add(this.txtCellNameSet);
             this.Controls.Add(this.Start);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.Text = "Form1";
@@ -238,6 +254,7 @@
         private System.Windows.Forms.TextBox txtData;
         private System.Windows.Forms.Button btnGetData;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label LblNumberTest;
     }
 }
 

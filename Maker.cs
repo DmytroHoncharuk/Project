@@ -18,34 +18,40 @@ namespace TestForm2
         
         parentForm = form;}
 
-
-        
-        public  void TexBoxMake(int numberOfTexNox)
+        public void MakeInputBox(int number, int positionX, int positionY)
         {
-            int startX = 150;
-            int startY = 495;
-            int textBoxWidth = 100;
+            LableMake(number , positionX,  positionY + 25 );
+            TexBoxMake(number, positionX+150, positionY + 25);
+
+        }
+        
+        public  void TexBoxMake(int numberOfTexNox, int positionX, int positionY)
+        {
+            
+            int textBoxWidth = 250;
             int textBoxHeight = 20;
             for (int i = 0; i < numberOfTexNox; i++)
             {
                 TextBox textBox = new TextBox();
-                textBox.Location = new Point(startX, startY + i * (textBoxHeight + 5));
+                textBox.Location = new Point(positionX, positionY + i * (textBoxHeight + 8));
                 textBox.Size = new Size(textBoxWidth, textBoxHeight);
                 parentForm.textBoxes.Add(textBox);
                 parentForm.Controls.Add(textBox);
                 
             }
         }
-        public void LableMake(int numberOflable)
+        public void LableMake(int numberOflable, int positionX, int positionY)
         {
-            int startX = 35;
-            int startY = 495;
+            
             
             int textBoxHeight = 20;
             for (int i = 0; i < numberOflable; i++)
             {
                 Label label = new Label();
-                label.Location = new Point(startX, startY + i * (textBoxHeight + 5));
+                label.Font = new System.Drawing.Font("TT Firs Neue", 10F);
+
+
+                label.Location = new Point(positionX, positionY + i * (textBoxHeight + 8));
                 string text = (i + 1) + " тест";
                 label.Text = text;
 
