@@ -125,7 +125,6 @@ namespace TestForm2
             var values = helper.GetMarksAndNickOfEachStudent();
             var range1 = "A";
 
-
             var value = values[0].ToList();
             List<string> finalValueList = value.ConvertAll(x => x.ToString());
             var sheetreq = helper.sheetService.Spreadsheets.Get(fileid);
@@ -143,9 +142,14 @@ namespace TestForm2
                     helper.Set2(cellName: temp, value: item, sheername2, fileid);
                     j++;
                 }
-            foreach (string item in collection)
+            int j = 1;
+            foreach (string item in values)
             {
+                string temp = "A" + j.ToString();
+                foreach (var smth in value[0])
+                {
 
+                }
             }
             /*
             var values = helper.GetMarksAndNickOfEachStudent();
