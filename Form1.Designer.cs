@@ -43,13 +43,13 @@
             this.btnMakeTextBox = new System.Windows.Forms.Button();
             this.txtData = new System.Windows.Forms.TextBox();
             this.btnGetData = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnOfNewFileCreation = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // Start
             // 
             this.Start.Location = new System.Drawing.Point(22, 19);
-            this.Start.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Start.Margin = new System.Windows.Forms.Padding(2);
             this.Start.Name = "Start";
             this.Start.Size = new System.Drawing.Size(118, 39);
             this.Start.TabIndex = 0;
@@ -60,7 +60,7 @@
             // txtCellNameSet
             // 
             this.txtCellNameSet.Location = new System.Drawing.Point(26, 68);
-            this.txtCellNameSet.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtCellNameSet.Margin = new System.Windows.Forms.Padding(2);
             this.txtCellNameSet.Name = "txtCellNameSet";
             this.txtCellNameSet.Size = new System.Drawing.Size(114, 20);
             this.txtCellNameSet.TabIndex = 1;
@@ -69,7 +69,7 @@
             // txtCellValue
             // 
             this.txtCellValue.Location = new System.Drawing.Point(144, 68);
-            this.txtCellValue.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtCellValue.Margin = new System.Windows.Forms.Padding(2);
             this.txtCellValue.Name = "txtCellValue";
             this.txtCellValue.Size = new System.Drawing.Size(114, 20);
             this.txtCellValue.TabIndex = 2;
@@ -77,7 +77,7 @@
             // txtCellNameGet
             // 
             this.txtCellNameGet.Location = new System.Drawing.Point(27, 91);
-            this.txtCellNameGet.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtCellNameGet.Margin = new System.Windows.Forms.Padding(2);
             this.txtCellNameGet.Name = "txtCellNameGet";
             this.txtCellNameGet.Size = new System.Drawing.Size(114, 20);
             this.txtCellNameGet.TabIndex = 3;
@@ -85,7 +85,7 @@
             // txtCellGetValue
             // 
             this.txtCellGetValue.Location = new System.Drawing.Point(262, 91);
-            this.txtCellGetValue.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtCellGetValue.Margin = new System.Windows.Forms.Padding(2);
             this.txtCellGetValue.Name = "txtCellGetValue";
             this.txtCellGetValue.Size = new System.Drawing.Size(114, 20);
             this.txtCellGetValue.TabIndex = 4;
@@ -94,7 +94,7 @@
             // 
             this.Get.Enabled = false;
             this.Get.Location = new System.Drawing.Point(144, 91);
-            this.Get.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Get.Margin = new System.Windows.Forms.Padding(2);
             this.Get.Name = "Get";
             this.Get.Size = new System.Drawing.Size(113, 18);
             this.Get.TabIndex = 5;
@@ -106,7 +106,7 @@
             // 
             this.Set.Enabled = false;
             this.Set.Location = new System.Drawing.Point(262, 68);
-            this.Set.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Set.Margin = new System.Windows.Forms.Padding(2);
             this.Set.Name = "Set";
             this.Set.Size = new System.Drawing.Size(113, 18);
             this.Set.TabIndex = 6;
@@ -118,7 +118,7 @@
             // 
             this.BtnGetGroup.Enabled = false;
             this.BtnGetGroup.Location = new System.Drawing.Point(144, 162);
-            this.BtnGetGroup.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.BtnGetGroup.Margin = new System.Windows.Forms.Padding(2);
             this.BtnGetGroup.Name = "BtnGetGroup";
             this.BtnGetGroup.Size = new System.Drawing.Size(113, 18);
             this.BtnGetGroup.TabIndex = 7;
@@ -129,7 +129,7 @@
             // txtGetGroup
             // 
             this.txtGetGroup.Location = new System.Drawing.Point(27, 162);
-            this.txtGetGroup.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtGetGroup.Margin = new System.Windows.Forms.Padding(2);
             this.txtGetGroup.Name = "txtGetGroup";
             this.txtGetGroup.Size = new System.Drawing.Size(114, 20);
             this.txtGetGroup.TabIndex = 8;
@@ -137,7 +137,7 @@
             // txtStudents
             // 
             this.txtStudents.Location = new System.Drawing.Point(262, 162);
-            this.txtStudents.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtStudents.Margin = new System.Windows.Forms.Padding(2);
             this.txtStudents.Multiline = true;
             this.txtStudents.Name = "txtStudents";
             this.txtStudents.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -148,7 +148,7 @@
             // txtNameSheets
             // 
             this.txtNameSheets.Location = new System.Drawing.Point(145, 19);
-            this.txtNameSheets.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtNameSheets.Margin = new System.Windows.Forms.Padding(2);
             this.txtNameSheets.Name = "txtNameSheets";
             this.txtNameSheets.Size = new System.Drawing.Size(387, 20);
             this.txtNameSheets.TabIndex = 10;
@@ -157,7 +157,7 @@
             // txtNumOfTextBox
             // 
             this.txtNumOfTextBox.Location = new System.Drawing.Point(26, 402);
-            this.txtNumOfTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtNumOfTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.txtNumOfTextBox.Name = "txtNumOfTextBox";
             this.txtNumOfTextBox.Size = new System.Drawing.Size(114, 20);
             this.txtNumOfTextBox.TabIndex = 11;
@@ -166,7 +166,7 @@
             // 
             this.btnMakeTextBox.Enabled = false;
             this.btnMakeTextBox.Location = new System.Drawing.Point(145, 402);
-            this.btnMakeTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnMakeTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.btnMakeTextBox.Name = "btnMakeTextBox";
             this.btnMakeTextBox.Size = new System.Drawing.Size(113, 18);
             this.btnMakeTextBox.TabIndex = 12;
@@ -177,7 +177,7 @@
             // txtData
             // 
             this.txtData.Location = new System.Drawing.Point(514, 410);
-            this.txtData.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtData.Margin = new System.Windows.Forms.Padding(2);
             this.txtData.Name = "txtData";
             this.txtData.Size = new System.Drawing.Size(114, 20);
             this.txtData.TabIndex = 13;
@@ -186,7 +186,7 @@
             // 
             this.btnGetData.Enabled = false;
             this.btnGetData.Location = new System.Drawing.Point(397, 410);
-            this.btnGetData.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnGetData.Margin = new System.Windows.Forms.Padding(2);
             this.btnGetData.Name = "btnGetData";
             this.btnGetData.Size = new System.Drawing.Size(113, 18);
             this.btnGetData.TabIndex = 14;
@@ -194,23 +194,24 @@
             this.btnGetData.UseVisualStyleBackColor = true;
             this.btnGetData.Click += new System.EventHandler(this.btnGetData_Click);
             // 
-            // button1
+            // btnOfNewFileCreation
             // 
-            this.button1.Location = new System.Drawing.Point(514, 91);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 15;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnOfNewFileCreation.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnOfNewFileCreation.Location = new System.Drawing.Point(761, 125);
+            this.btnOfNewFileCreation.Name = "btnOfNewFileCreation";
+            this.btnOfNewFileCreation.Size = new System.Drawing.Size(180, 30);
+            this.btnOfNewFileCreation.TabIndex = 16;
+            this.btnOfNewFileCreation.Text = "Створити новий файл на диску";
+            this.btnOfNewFileCreation.UseVisualStyleBackColor = true;
+            this.btnOfNewFileCreation.Click += new System.EventHandler(this.btnOfNewFileCreation_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(680, 482);
-            this.Controls.Add(this.button1);
+            this.ClientSize = new System.Drawing.Size(1157, 482);
+            this.Controls.Add(this.btnOfNewFileCreation);
             this.Controls.Add(this.btnGetData);
             this.Controls.Add(this.txtData);
             this.Controls.Add(this.btnMakeTextBox);
@@ -226,7 +227,7 @@
             this.Controls.Add(this.txtCellValue);
             this.Controls.Add(this.txtCellNameSet);
             this.Controls.Add(this.Start);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -252,7 +253,7 @@
         private System.Windows.Forms.Button btnMakeTextBox;
         private System.Windows.Forms.TextBox txtData;
         private System.Windows.Forms.Button btnGetData;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnOfNewFileCreation;
     }
 }
 

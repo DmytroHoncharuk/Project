@@ -1,5 +1,6 @@
 ﻿using Google.Apis.Auth.OAuth2;
 using Google.Apis.Drive.v3;
+using Google.Apis.Services;
 using Google.Apis.Sheets.v4;
 using Google.Apis.Sheets.v4.Data;
 using Google.Apis.Util.Store;
@@ -9,7 +10,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Net.Security;
 using System.Security.AccessControl;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -43,7 +46,6 @@ namespace TestForm2
             get;
             private set;
         } = new string[] {DriveService.Scope.Drive, SheetsService.Scope.Spreadsheets};
-
         internal void DisplayStudentFromGroup(string group, ref TextBox textBox, List<List<string>> listOfStudent)
         {
             textBox.Clear();
@@ -63,7 +65,6 @@ namespace TestForm2
             var response = request.Execute();
             return response.Values?.First()?.First()?.ToString();
         }
-
         internal List<List<string>>/*IList<IList<object>>*/ GetStudent()
         {
             var range1 = this.sheetName + "!" + "E" + ":" + "E";
@@ -143,6 +144,44 @@ namespace TestForm2
                 return true; 
             }
             return false;
+        }
+
+        public Google.Apis.Drive.v3.Data.File CreateSheet()
+        {
+            string[] scopes = new string[] { DriveService.Scope.Drive,
+                      DriveService.Scope.DriveFile,};
+            var clientId = "468012233136-6ta4lbrmue4jqp1p5i739ukb8s1sjc0u.apps.googleusercontent.com";      // From https://console.developers.google.com  
+            var clientSecret = "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";          // From https://console.developers.google.com  
+                                                                  // here is where we Request the user to give us access, or use the Refresh Token that was previously stored in %AppData%  
+            var credential = GoogleWebAuthorizationBroker.AuthorizeAsync(new ClientSecrets
+            {
+                ClientId = clientId,
+                ClientSecret = clientSecret
+            }, scopes,
+            Environment.UserName, CancellationToken.None, new FileDataStore("MyAppsToken")).Result;
+            //Once consent is recieved, your token will be stored locally on the AppData directory, so that next time you wont be prompted for consent.   
+            DriveService _service = new DriveService(new BaseClientService.Initializer()
+            {
+                HttpClientInitializer = credential,
+                ApplicationName = "MyAppName",
+
+            });
+            var _parent = "";//ID of folder if you want to create spreadsheet in specific folder
+            var filename = "helloworld";
+            var fileMetadata = new Google.Apis.Drive.v3.Data.File()
+            {
+                Name = filename,
+                MimeType = "application/vnd.google-apps.spreadsheet",
+                //TeamDriveId = teamDriveID, // IF you want to add to specific team drive  
+            };
+            FilesResource.CreateRequest request = _service.Files.Create(fileMetadata);
+            request.SupportsTeamDrives = true;
+            fileMetadata.Parents = new List<string> { _parent }; // Parent folder id or TeamDriveID  
+            request.Fields = "id";
+            System.Net.ServicePointManager.ServerCertificateValidationCallback = delegate (object sender, X509Certificate certificate, X509Chain chain, SslPolicyErrors sslPolicyErrors) { return true; };
+            var file = request.Execute();
+            MessageBox.Show("File ID: " + file.Id);
+            return file;
         }
     }
 }
