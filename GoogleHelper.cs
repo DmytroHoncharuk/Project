@@ -25,7 +25,7 @@ namespace TestForm2
         private readonly string token;
         private readonly string sheetFileName;
         private UserCredential credentials;
-        private DriveService driveService;
+        public DriveService driveService;
         private SheetsService sheetService;
         private string sheetFileId;
         private string sheetName;
@@ -146,7 +146,7 @@ namespace TestForm2
             return false;
         }
 
-        public Google.Apis.Drive.v3.Data.File CreateSheet()
+        /*public static Google.Apis.Drive.v3.Data.File CreateSheet()
         {
             string[] scopes = new string[] { DriveService.Scope.Drive,
                       DriveService.Scope.DriveFile,};
@@ -182,6 +182,6 @@ namespace TestForm2
             var file = request.Execute();
             MessageBox.Show("File ID: " + file.Id);
             return file;
-        }
+        }*/
     }
 }
