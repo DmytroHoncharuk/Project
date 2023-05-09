@@ -121,7 +121,7 @@
             this.BtnGetGroup.Location = new System.Drawing.Point(144, 162);
             this.BtnGetGroup.Margin = new System.Windows.Forms.Padding(2);
             this.BtnGetGroup.Name = "BtnGetGroup";
-            this.BtnGetGroup.Size = new System.Drawing.Size(113, 18);
+            this.BtnGetGroup.Size = new System.Drawing.Size(113, 28);
             this.BtnGetGroup.TabIndex = 7;
             this.BtnGetGroup.Text = "GetStudents ";
             this.BtnGetGroup.UseVisualStyleBackColor = true;
@@ -200,10 +200,10 @@
             this.btnOfNewFileCreation.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnOfNewFileCreation.Location = new System.Drawing.Point(747, 126);
             this.btnOfNewFileCreation.Name = "btnOfNewFileCreation";
-            this.btnOfNewFileCreation.Size = new System.Drawing.Size(180, 30);
+            this.btnOfNewFileCreation.Size = new System.Drawing.Size(180, 64);
             this.btnOfNewFileCreation.TabIndex = 16;
             this.btnOfNewFileCreation.TabStop = false;
-            this.btnOfNewFileCreation.Text = "Створити новий файл на диску";
+            this.btnOfNewFileCreation.Text = "Створити новий файл на диску та виконати необхідні дії";
             this.btnOfNewFileCreation.UseVisualStyleBackColor = true;
             this.btnOfNewFileCreation.Click += new System.EventHandler(this.btnOfNewFileCreation_Click);
             // 

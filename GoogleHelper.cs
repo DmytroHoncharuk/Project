@@ -26,7 +26,7 @@ namespace TestForm2
         private readonly string sheetFileName;
         private UserCredential credentials;
         public DriveService driveService;
-        private SheetsService sheetService;
+        public SheetsService sheetService;
         private string sheetFileId;
         private string sheetName;
 
@@ -84,7 +84,22 @@ namespace TestForm2
             List<List<string>> finalList = new List<List<string>>() { Student_Group_As_String, Student_Name_As_String };
             return finalList; 
         }
+        internal List<IList<object>> GetMarksAndNickOfEachStudent()
+        {
+            var range1 = this.sheetName + "!" + "D" + ":" + "D";
+            var range2 = this.sheetName + "!" + "A" + ":" + "A";
+            var request = this.sheetService.Spreadsheets.Values.Get(spreadsheetId:this.sheetFileId, range:range2);
+            var response = request.Execute();
+            List<object> studentName = response.Values.SelectMany(x => x).ToList();
+            //List<object> StudentNameAsString = studentName.ConvertAll(x => x.ToString());
+            request = this.sheetService.Spreadsheets.Values.Get(spreadsheetId: this.sheetFileId, range: range1);
+            response = request.Execute();
+            List<object> studentTg = response.Values.SelectMany(x => x).ToList();
+            //List<object> StudentTgAsString = studentTg.ConvertAll(x => x.ToString());
 
+            List<IList<object>> list_Of_Student_Name_and_Nickname = new List<IList<object>>() { studentName, studentTg };
+            return list_Of_Student_Name_and_Nickname;
+        }
         internal void Set(string cellName, string value)
         {
             var range = this.sheetName + "!" + cellName + ":" + cellName; 
@@ -145,43 +160,5 @@ namespace TestForm2
             }
             return false;
         }
-
-        /*public static Google.Apis.Drive.v3.Data.File CreateSheet()
-        {
-            string[] scopes = new string[] { DriveService.Scope.Drive,
-                      DriveService.Scope.DriveFile,};
-            var clientId = "468012233136-6ta4lbrmue4jqp1p5i739ukb8s1sjc0u.apps.googleusercontent.com";      // From https://console.developers.google.com  
-            var clientSecret = "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";          // From https://console.developers.google.com  
-                                                                  // here is where we Request the user to give us access, or use the Refresh Token that was previously stored in %AppData%  
-            var credential = GoogleWebAuthorizationBroker.AuthorizeAsync(new ClientSecrets
-            {
-                ClientId = clientId,
-                ClientSecret = clientSecret
-            }, scopes,
-            Environment.UserName, CancellationToken.None, new FileDataStore("MyAppsToken")).Result;
-            //Once consent is recieved, your token will be stored locally on the AppData directory, so that next time you wont be prompted for consent.   
-            DriveService _service = new DriveService(new BaseClientService.Initializer()
-            {
-                HttpClientInitializer = credential,
-                ApplicationName = "MyAppName",
-
-            });
-            var _parent = "";//ID of folder if you want to create spreadsheet in specific folder
-            var filename = "helloworld";
-            var fileMetadata = new Google.Apis.Drive.v3.Data.File()
-            {
-                Name = filename,
-                MimeType = "application/vnd.google-apps.spreadsheet",
-                //TeamDriveId = teamDriveID, // IF you want to add to specific team drive  
-            };
-            FilesResource.CreateRequest request = _service.Files.Create(fileMetadata);
-            request.SupportsTeamDrives = true;
-            fileMetadata.Parents = new List<string> { _parent }; // Parent folder id or TeamDriveID  
-            request.Fields = "id";
-            System.Net.ServicePointManager.ServerCertificateValidationCallback = delegate (object sender, X509Certificate certificate, X509Chain chain, SslPolicyErrors sslPolicyErrors) { return true; };
-            var file = request.Execute();
-            MessageBox.Show("File ID: " + file.Id);
-            return file;
-        }*/
     }
 }

@@ -1,4 +1,5 @@
-﻿using Google.Apis.Sheets.v4.Data;
+﻿using Google.Apis.Sheets.v4;
+using Google.Apis.Sheets.v4.Data;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -92,6 +93,21 @@ namespace TestForm2
             var file = request.Execute();
             var fileid = file.Id;
 
+
+            var data = helper.GetMarksAndNickOfEachStudent();
+
+
+             var updateRange = "A:Z";
+            var newrequest = helper.sheetService.Spreadsheets.Values.Update(
+               new ValueRange { Values = new List<IList<object>>(data) },
+               spreadsheetId: fileid, range: updateRange
+               );
+            newrequest.ValueInputOption = SpreadsheetsResource.ValuesResource.UpdateRequest.ValueInputOptionEnum.RAW;
+            var response = newrequest.Execute();
+            //var updateRange = "A:A";
+            //var updateRequest = new ValueRange { Values = data };
+            //var updateResponse = helper.sheetService.Spreadsheets.Values.Update(updateRequest, fileid, updateRange);
+            //var result = updateResponse.Execute();
         }
 
         private void txtStudents_TextChanged(object sender, EventArgs e)
