@@ -112,19 +112,7 @@ namespace TestForm2
             request.ValueInputOption = SpreadsheetsResource.ValuesResource.UpdateRequest.ValueInputOptionEnum.USERENTERED; 
             var response = request.Execute(); 
         }
-        internal void Set2(string cellName, string value, string sheetName, string fileid)
-        {
-            //var range = sheetName + "!" + cellName + ":" + cellName;
-            var range = sheetName + "!" + cellName + ":" + cellName;
-            var values = new List<List<object>> { new List<object> { value } };
 
-            var request = this.sheetService.Spreadsheets.Values.Update(
-                new ValueRange { Values = new List<IList<object>>(values) },
-                spreadsheetId: fileid, range: range
-                );
-            request.ValueInputOption = SpreadsheetsResource.ValuesResource.UpdateRequest.ValueInputOptionEnum.USERENTERED;
-            var response = request.Execute();
-        }
         internal async Task <bool> Start()
         {
             string credentionalpath = Path.Combine(Environment.CurrentDirectory, ".credentials", ApplicationName);
