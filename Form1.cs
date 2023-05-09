@@ -1,7 +1,8 @@
-﻿using Google.Apis.Sheets.v4;
-using Google.Apis.Sheets.v4.Data;
+﻿using Google.Apis.Sheets.v4.Data;
+using Google.Apis.Sheets.v4;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace TestForm2
@@ -85,7 +86,8 @@ namespace TestForm2
         {
             var fileMetadata = new Google.Apis.Drive.v3.Data.File()
             {
-                Name = fileNameTxt.Text, // задає ім'я створеного файлу, можна реалізувати те, що користувач буде вводити ім'я в textbox сам
+                //Name = fileNameTxt.Text, // задає ім'я створеного файлу, можна реалізувати те, що користувач буде вводити ім'я в textbox сам
+                Name = "Новий файл",
                 MimeType = "application/vnd.google-apps.spreadsheet"
             };
             var request = helper.driveService.Files.Create(fileMetadata);
@@ -94,20 +96,74 @@ namespace TestForm2
             var fileid = file.Id;
 
 
-            var data = helper.GetMarksAndNickOfEachStudent();
+
+            ///////////////////////
+
+            // Запит на створення нового листка
+            var requestNewsheet = new Request
+            {
+                AddSheet = new AddSheetRequest
+                {
+                    Properties = new SheetProperties
+                    {
+                        Title = "New Sheet 2"
+                    }
+                }
+            };
+
+            // Створення батч-запиту
+            var batchUpdateRequest = new BatchUpdateSpreadsheetRequest
+            {
+                Requests = new List<Request> { requestNewsheet }
+            };
+
+            // Виклик сервісу для створення листка
+            SpreadsheetsResource.BatchUpdateRequest batchUpdate = helper.sheetService.Spreadsheets.BatchUpdate(batchUpdateRequest, fileid);
+            BatchUpdateSpreadsheetResponse batchUpdateResponse = batchUpdate.Execute();
+
+            //////////////////////
+            var values = helper.GetMarksAndNickOfEachStudent();
+            var range1 = "A";
 
 
-             var updateRange = "A:Z";
-            var newrequest = helper.sheetService.Spreadsheets.Values.Update(
-               new ValueRange { Values = new List<IList<object>>(data) },
-               spreadsheetId: fileid, range: updateRange
-               );
-            newrequest.ValueInputOption = SpreadsheetsResource.ValuesResource.UpdateRequest.ValueInputOptionEnum.RAW;
-            var response = newrequest.Execute();
-            //var updateRange = "A:A";
-            //var updateRequest = new ValueRange { Values = data };
-            //var updateResponse = helper.sheetService.Spreadsheets.Values.Update(updateRequest, fileid, updateRange);
-            //var result = updateResponse.Execute();
+            var value = values[0].ToList();
+            List<string> finalValueList = value.ConvertAll(x => x.ToString());
+            var sheetreq = helper.sheetService.Spreadsheets.Get(fileid);
+            var respSheetreq = sheetreq.Execute();
+            var value2 = values[1].ToList();
+
+            List<string> finalValueList2 = value2.ConvertAll(x => x.ToString());
+
+            var sheetname = respSheetreq.Sheets[0].Properties.Title;
+            var sheername2 = respSheetreq.Sheets[1].Properties.Title; //виходить за межі
+            int j = 1;  
+                foreach (string item in finalValueList2)
+                {
+                    string temp = range1 + j.ToString();
+                    helper.Set2(cellName: temp, value: item, sheername2, fileid);
+                    j++;
+                }
+            foreach (string item in collection)
+            {
+
+            }
+            /*
+            var values = helper.GetMarksAndNickOfEachStudent();
+           // IList<IList<object>> value = (IList<IList<object>>)values[0];
+            var range = "B3:D80"; 
+            var value_range_body = new ValueRange
+            {
+                Values = values,
+                MajorDimension = "COLUMNS",
+
+            };
+            
+             записує дані, однак лише масив масивів та у більше, ніж один стовпчик
+
+            var Qrequest = helper.sheetService.Spreadsheets.Values.Update(value_range_body, fileid, range);
+            Qrequest.ValueInputOption = SpreadsheetsResource.ValuesResource.UpdateRequest.ValueInputOptionEnum.USERENTERED;
+            var Qresponce=Qrequest.Execute();
+            */
         }
 
         private void txtStudents_TextChanged(object sender, EventArgs e)
