@@ -4,6 +4,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using Windows.ApplicationModel.Calls;
+using System.Threading;
 
 namespace TestForm2
 {
@@ -135,21 +137,34 @@ namespace TestForm2
 
             var sheetname = respSheetreq.Sheets[0].Properties.Title;
             var sheername2 = respSheetreq.Sheets[1].Properties.Title; //виходить за межі
+            
             int j = 1;  
+            /*
                 foreach (string item in finalValueList2)
                 {
                     string temp = range1 + j.ToString();
                     helper.Set2(cellName: temp, value: item, sheername2, fileid);
                     j++;
                 }
-            int j = 1;
-            foreach (string item in values)
-            {
-                string temp = "A" + j.ToString();
-                foreach (var smth in value[0])
-                {
+            */
+            //int j = 1;
 
+
+            int i = 0;
+            char beginningRange = 'A';
+            foreach (List<string> item in values) // вставляє нік телеги на другий листок, ПІБ на перший
+            {
+                Thread.Sleep(3000);
+                j = 1;
+                foreach (var smth in item)
+                {
+                    Thread.Sleep(3000); // задля зменшення кількості запитів
+                    string temp = beginningRange.ToString() + j.ToString();
+                    helper.Set2(cellName: temp, value: smth, respSheetreq.Sheets[i].Properties.Title, fileid);
+                    j++;
                 }
+                beginningRange++;
+                i++;
             }
             /*
             var values = helper.GetMarksAndNickOfEachStudent();
