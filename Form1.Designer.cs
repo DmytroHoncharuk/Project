@@ -44,6 +44,7 @@
             this.txtData = new System.Windows.Forms.TextBox();
             this.btnGetData = new System.Windows.Forms.Button();
             this.btnOfNewFileCreation = new System.Windows.Forms.Button();
+            this.fileNameTxt = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // Start
@@ -196,14 +197,24 @@
             // 
             // btnOfNewFileCreation
             // 
+            this.btnOfNewFileCreation.Enabled = false;
             this.btnOfNewFileCreation.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnOfNewFileCreation.Location = new System.Drawing.Point(761, 125);
+            this.btnOfNewFileCreation.Location = new System.Drawing.Point(747, 126);
             this.btnOfNewFileCreation.Name = "btnOfNewFileCreation";
             this.btnOfNewFileCreation.Size = new System.Drawing.Size(180, 30);
             this.btnOfNewFileCreation.TabIndex = 16;
+            this.btnOfNewFileCreation.TabStop = false;
             this.btnOfNewFileCreation.Text = "Створити новий файл на диску";
             this.btnOfNewFileCreation.UseVisualStyleBackColor = true;
             this.btnOfNewFileCreation.Click += new System.EventHandler(this.btnOfNewFileCreation_Click);
+            // 
+            // fileNameTxt
+            // 
+            this.fileNameTxt.Location = new System.Drawing.Point(747, 100);
+            this.fileNameTxt.Name = "fileNameTxt";
+            this.fileNameTxt.Size = new System.Drawing.Size(180, 20);
+            this.fileNameTxt.TabIndex = 17;
+            this.fileNameTxt.TextChanged += new System.EventHandler(this.fileNameTxt_TextChanged);
             // 
             // Form1
             // 
@@ -211,6 +222,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1157, 482);
+            this.Controls.Add(this.fileNameTxt);
             this.Controls.Add(this.btnOfNewFileCreation);
             this.Controls.Add(this.btnGetData);
             this.Controls.Add(this.txtData);
@@ -254,6 +266,7 @@
         private System.Windows.Forms.TextBox txtData;
         private System.Windows.Forms.Button btnGetData;
         private System.Windows.Forms.Button btnOfNewFileCreation;
+        private System.Windows.Forms.TextBox fileNameTxt;
     }
 }
 

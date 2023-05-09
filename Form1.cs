@@ -84,7 +84,7 @@ namespace TestForm2
         {
             var fileMetadata = new Google.Apis.Drive.v3.Data.File()
             {
-                Name = "My new file", // задає ім'я створеного файлу, можна реалізувати те, що користувач буде вводити ім'я в textbox сам
+                Name = fileNameTxt.Text, // задає ім'я створеного файлу, можна реалізувати те, що користувач буде вводити ім'я в textbox сам
                 MimeType = "application/vnd.google-apps.spreadsheet"
             };
             var request = helper.driveService.Files.Create(fileMetadata);
@@ -99,6 +99,9 @@ namespace TestForm2
 
         }
 
+        private void fileNameTxt_TextChanged(object sender, EventArgs e)
+        {
 
+        }
     }
 }
