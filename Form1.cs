@@ -140,7 +140,7 @@ namespace TestForm2
             
             int j = 1;  
             /*
-                foreach (string item in finalValueList2)
+                foreach (string item in finalValueList2) // тестова версія 
                 {
                     string temp = range1 + j.ToString();
                     helper.Set2(cellName: temp, value: item, sheername2, fileid);
