@@ -197,7 +197,6 @@
             // 
             // btnOfNewFileCreation
             // 
-            this.btnOfNewFileCreation.Enabled = false;
             this.btnOfNewFileCreation.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnOfNewFileCreation.Location = new System.Drawing.Point(747, 126);
             this.btnOfNewFileCreation.Name = "btnOfNewFileCreation";
