@@ -84,20 +84,20 @@ namespace TestForm2
             List<List<string>> finalList = new List<List<string>>() { Student_Group_As_String, Student_Name_As_String };
             return finalList; 
         }
-        internal List<IList<object>> GetMarksAndNickOfEachStudent()
+        internal List<List<string>> GetMarksAndNickOfEachStudent()
         {
             var range1 = this.sheetName + "!" + "D" + ":" + "D";
             var range2 = this.sheetName + "!" + "A" + ":" + "A";
             var request = this.sheetService.Spreadsheets.Values.Get(spreadsheetId:this.sheetFileId, range:range2);
             var response = request.Execute();
             List<object> studentName = response.Values.SelectMany(x => x).ToList();
-            //List<object> StudentNameAsString = studentName.ConvertAll(x => x.ToString());
+            List<string> StudentNameAsString = studentName.ConvertAll(x => x.ToString());
             request = this.sheetService.Spreadsheets.Values.Get(spreadsheetId: this.sheetFileId, range: range1);
             response = request.Execute();
             List<object> studentTg = response.Values.SelectMany(x => x).ToList();
-            //List<object> StudentTgAsString = studentTg.ConvertAll(x => x.ToString());
+            List<string> StudentTgAsString = studentTg.ConvertAll(x => x.ToString());
 
-            List<IList<object>> list_Of_Student_Name_and_Nickname = new List<IList<object>>() { studentName, studentTg };
+            List<List<string>> list_Of_Student_Name_and_Nickname = new List<List<string>>() { StudentNameAsString, StudentTgAsString };
             return list_Of_Student_Name_and_Nickname;
         }
         internal void Set(string cellName, string value)
