@@ -80,7 +80,7 @@ namespace TestForm2
         {
 
         }
-        private void btnOfNewFileCreation_Click(object sender, EventArgs e)
+        private void btnOfNewFileCreation_Click(object sender, EventArgs e) // створення нової таблиці, робочий варіант
         {
             var fileMetadata = new Google.Apis.Drive.v3.Data.File()
             {
