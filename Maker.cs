@@ -11,20 +11,46 @@ namespace TestForm2
 {
     internal  class Maker 
     {
-        private Form1 parentForm;
+        private Form parentForm;
+        private List<TextBox> textBoxes;
+        private List<CheckBox> checkBoxes;
 
-        public Maker(Form1 form)
+        public Maker(List<TextBox> textBoxes, List<CheckBox> checkBoxes, Form parentForm)
         {
-        
-        parentForm = form;}
+        this.textBoxes = textBoxes;
+            this.checkBoxes = checkBoxes;
+
+            this.parentForm = parentForm;
+        }
 
         public void MakeInputBox(int number, int positionX, int positionY)
         {
             LableMake(number , positionX,  positionY + 25 );
             TexBoxMake(number, positionX+150, positionY + 25);
+            CheckBoxMake(number, positionX + 420, positionY + 25); 
 
         }
-        
+
+        private void CheckBoxMake(int number, int positionX, int positionY)
+        {
+            int textBoxHeight = 20;
+            for (int i = 0; i < number; i++)
+            {
+                CheckBox checkBox = new CheckBox();
+                checkBox.Location = new Point(positionX, positionY + i * (textBoxHeight + 8));
+                checkBox.Enabled = false;
+
+
+                checkBoxes.Add(checkBox);
+
+
+
+                //parentForm.textBoxes.Add(textBox);
+                //parentForm.Controls.Add(textBox);
+
+            }
+        }
+
         public  void TexBoxMake(int numberOfTexNox, int positionX, int positionY)
         {
             
@@ -35,8 +61,12 @@ namespace TestForm2
                 TextBox textBox = new TextBox();
                 textBox.Location = new Point(positionX, positionY + i * (textBoxHeight + 8));
                 textBox.Size = new Size(textBoxWidth, textBoxHeight);
-                parentForm.textBoxes.Add(textBox);
-                parentForm.Controls.Add(textBox);
+                textBoxes.Add(textBox);
+                
+
+
+                //parentForm.textBoxes.Add(textBox);
+                //parentForm.Controls.Add(textBox);
                 
             }
         }

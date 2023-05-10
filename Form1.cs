@@ -11,6 +11,7 @@ namespace TestForm2
         private GoogleHelper helper;
         private Maker Maker;
         public List<TextBox> textBoxes = new List<TextBox>();
+        public List<CheckBox> checkBoxes = new List<CheckBox>();
 
 
         public Form1()
@@ -26,7 +27,7 @@ namespace TestForm2
             this.helper = new GoogleHelper(Properties.Settings.Default.GoogleToken, txtNameSheets.Text /*Properties.Settings.Default.SheetFileNeme*/);
 
             bool succsess = this.helper.Start().Result;
-            Maker = new Maker(this);
+            Maker = new Maker(textBoxes, checkBoxes, this);
 
             Get.Enabled = Set.Enabled = BtnGetGroup.Enabled = btnMakeTextBox.Enabled = succsess;
 
@@ -75,7 +76,10 @@ namespace TestForm2
             if (number <= 20)
             {
                 Maker.MakeInputBox(number, LblNumberTest.Location.X, LblNumberTest.Location.Y);
-
+                foreach (TextBox textBox in textBoxes)
+                {
+                    Controls.Add(textBox);
+                }
                 btnGetData.Enabled = true;
             }
             else
@@ -120,6 +124,11 @@ namespace TestForm2
         private void txtNumOfTextBox_TextChanged(object sender, EventArgs e)
         {
             this.BackColor = Color.White; 
+        }
+
+        private void LblNumberTest_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

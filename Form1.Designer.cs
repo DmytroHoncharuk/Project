@@ -202,6 +202,7 @@
             this.LblNumberTest.Size = new System.Drawing.Size(133, 22);
             this.LblNumberTest.TabIndex = 16;
             this.LblNumberTest.Text = "Кількість тестів";
+            this.LblNumberTest.Click += new System.EventHandler(this.LblNumberTest_Click);
             // 
             // Form1
             // 

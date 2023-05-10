@@ -6,21 +6,32 @@ using System.Threading.Tasks;
 
 namespace TestForm2
 {
-    internal class Sheet
+    public  class Sheet
     {
         string sheetFileName;
         readonly string  sheetID;
 
         public string SheetFileName
-        { get; set; }
+        { 
+            get
+            {
+            return sheetFileName; }
+            set
+            {
+                sheetFileName = value;
+            }
+        
+        }
         public string SheetID
         {
-            get; 
+            get
+            {
+            return sheetID; }
         }
 
         public Sheet(string sheetFileName, string sheetID)
         {
-            SheetFileName = sheetFileName;
+            this.sheetFileName = sheetFileName;
             this.sheetID = sheetID;
             
         }
