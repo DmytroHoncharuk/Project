@@ -154,11 +154,11 @@ namespace TestForm2
             char beginningRange = 'A';
             foreach (List<string> item in values) // вставляє нік телеги на другий листок, ПІБ на перший
             {
-                Thread.Sleep(3000);
+                Thread.Sleep(500);
                 j = 1;
                 foreach (var smth in item)
                 {
-                    Thread.Sleep(3000); // задля зменшення кількості запитів
+                    Thread.Sleep(500); // задля зменшення кількості запитів
                     string temp = beginningRange.ToString() + j.ToString();
                     helper.Set2(cellName: temp, value: smth, respSheetreq.Sheets[i].Properties.Title, fileid);
                     j++;
