@@ -97,10 +97,10 @@ namespace TestForm2
             var file = request.Execute();
             var fileid = file.Id;
 
-
+            Tools.SheetCreation(helper, fileid);
 
             ///////////////////////
-
+            /*
             // Запит на створення нового листка
             var requestNewsheet = new Request
             {
@@ -122,7 +122,7 @@ namespace TestForm2
             // Виклик сервісу для створення листка
             SpreadsheetsResource.BatchUpdateRequest batchUpdate = helper.sheetService.Spreadsheets.BatchUpdate(batchUpdateRequest, fileid);
             BatchUpdateSpreadsheetResponse batchUpdateResponse = batchUpdate.Execute();
-
+            */
             //////////////////////
             var values = helper.GetMarksAndNickOfEachStudent();
             var range1 = "A";
@@ -154,11 +154,11 @@ namespace TestForm2
             char beginningRange = 'A';
             foreach (List<string> item in values) // вставляє нік телеги на другий листок, ПІБ на перший
             {
-                Thread.Sleep(500);
+                Thread.Sleep(700);
                 j = 1;
                 foreach (var smth in item)
                 {
-                    Thread.Sleep(500); // задля зменшення кількості запитів
+                    Thread.Sleep(700); // задля зменшення кількості запитів
                     string temp = beginningRange.ToString() + j.ToString();
                     helper.Set2(cellName: temp, value: smth, respSheetreq.Sheets[i].Properties.Title, fileid);
                     j++;
