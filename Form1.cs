@@ -97,92 +97,31 @@ namespace TestForm2
             var file = request.Execute();
             var fileid = file.Id;
 
+            Tools.SheetCreation(helper, fileid, "Номер 2");
 
-
-            ///////////////////////
-
-            // Запит на створення нового листка
-            var requestNewsheet = new Request
-            {
-                AddSheet = new AddSheetRequest
-                {
-                    Properties = new SheetProperties
-                    {
-                        Title = "New Sheet 2"
-                    }
-                }
-            };
-
-            // Створення батч-запиту
-            var batchUpdateRequest = new BatchUpdateSpreadsheetRequest
-            {
-                Requests = new List<Request> { requestNewsheet }
-            };
-
-            // Виклик сервісу для створення листка
-            SpreadsheetsResource.BatchUpdateRequest batchUpdate = helper.sheetService.Spreadsheets.BatchUpdate(batchUpdateRequest, fileid);
-            BatchUpdateSpreadsheetResponse batchUpdateResponse = batchUpdate.Execute();
 
             //////////////////////
             var values = helper.GetMarksAndNickOfEachStudent();
-            var range1 = "A";
-
-            var value = values[0].ToList();
-            List<string> finalValueList = value.ConvertAll(x => x.ToString());
             var sheetreq = helper.sheetService.Spreadsheets.Get(fileid);
             var respSheetreq = sheetreq.Execute();
-            var value2 = values[1].ToList();
-
-            List<string> finalValueList2 = value2.ConvertAll(x => x.ToString());
-
-            var sheetname = respSheetreq.Sheets[0].Properties.Title;
-            var sheername2 = respSheetreq.Sheets[1].Properties.Title; //виходить за межі
-            
-            int j = 1;  
-            /*
-                foreach (string item in finalValueList2) // тестова версія 
-                {
-                    string temp = range1 + j.ToString();
-                    helper.Set2(cellName: temp, value: item, sheername2, fileid);
-                    j++;
-                }
-            */
-            //int j = 1;
-
-
+            //
+            int j;
             int i = 0;
             char beginningRange = 'A';
             foreach (List<string> item in values) // вставляє нік телеги на другий листок, ПІБ на перший
             {
-                Thread.Sleep(500);
+                Thread.Sleep(700);
                 j = 1;
                 foreach (var smth in item)
                 {
-                    Thread.Sleep(500); // задля зменшення кількості запитів
-                    string temp = beginningRange.ToString() + j.ToString();
-                    helper.Set2(cellName: temp, value: smth, respSheetreq.Sheets[i].Properties.Title, fileid);
+                    Thread.Sleep(700); // задля зменшення кількості запитів
+                    string cell = beginningRange.ToString() + j.ToString(); // клітинка, у яку будуть вставлятися дані
+                    helper.Set2(cellName: cell, value: smth, respSheetreq.Sheets[i].Properties.Title, fileid); // вставлення даних
                     j++;
                 }
                 beginningRange++;
                 i++;
             }
-            /*
-            var values = helper.GetMarksAndNickOfEachStudent();
-           // IList<IList<object>> value = (IList<IList<object>>)values[0];
-            var range = "B3:D80"; 
-            var value_range_body = new ValueRange
-            {
-                Values = values,
-                MajorDimension = "COLUMNS",
-
-            };
-            
-             записує дані, однак лише масив масивів та у більше, ніж один стовпчик
-
-            var Qrequest = helper.sheetService.Spreadsheets.Values.Update(value_range_body, fileid, range);
-            Qrequest.ValueInputOption = SpreadsheetsResource.ValuesResource.UpdateRequest.ValueInputOptionEnum.USERENTERED;
-            var Qresponce=Qrequest.Execute();
-            */
         }
 
         private void txtStudents_TextChanged(object sender, EventArgs e)
