@@ -102,7 +102,6 @@ namespace TestForm2
 
             //////////////////////
             var values = helper.GetMarksAndNickOfEachStudent();
-            var range1 = "A";
             var sheetreq = helper.sheetService.Spreadsheets.Get(fileid);
             var respSheetreq = sheetreq.Execute();
             //
