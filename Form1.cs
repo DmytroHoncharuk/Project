@@ -97,16 +97,16 @@ namespace TestForm2
             var file = request.Execute();
             var fileid = file.Id;
 
-            Tools.SheetCreation(helper, fileid);
+            Tools.SheetCreation(helper, fileid, "Номер 2");
 
 
             //////////////////////
             var values = helper.GetMarksAndNickOfEachStudent();
             var range1 = "A";
             var sheetreq = helper.sheetService.Spreadsheets.Get(fileid);
-            var respSheetreq = sheetreq.Execute();          
+            var respSheetreq = sheetreq.Execute();
             //
-
+            int j;
             int i = 0;
             char beginningRange = 'A';
             foreach (List<string> item in values) // вставляє нік телеги на другий листок, ПІБ на перший
@@ -116,8 +116,8 @@ namespace TestForm2
                 foreach (var smth in item)
                 {
                     Thread.Sleep(700); // задля зменшення кількості запитів
-                    string temp = beginningRange.ToString() + j.ToString();
-                    helper.Set2(cellName: temp, value: smth, respSheetreq.Sheets[i].Properties.Title, fileid);
+                    string cell = beginningRange.ToString() + j.ToString(); // клітинка, у яку будуть вставлятися дані
+                    helper.Set2(cellName: cell, value: smth, respSheetreq.Sheets[i].Properties.Title, fileid); // вставлення даних
                     j++;
                 }
                 beginningRange++;

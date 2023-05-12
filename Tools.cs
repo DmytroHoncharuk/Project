@@ -11,7 +11,7 @@ namespace TestForm2
 
     public static class Tools
     {
-        internal static void SheetCreation(GoogleHelper helper, string fileid)
+        internal static void SheetCreation(GoogleHelper helper, string fileid, string nameOfSheet)
         {
             var requestNewsheet = new Request
             {
@@ -19,7 +19,7 @@ namespace TestForm2
                 {
                     Properties = new SheetProperties
                     {
-                        Title = "New Sheet 2"
+                        Title = nameOfSheet
                     }
                 }
             };
