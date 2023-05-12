@@ -88,8 +88,8 @@ namespace TestForm2
         {
             var fileMetadata = new Google.Apis.Drive.v3.Data.File()
             {
-                Name = fileNameTxt.Text, // задає ім'я створеного файлу, можна реалізувати те, що користувач буде вводити ім'я в textbox сам
-                //Name = "Новий файл",
+                //Name = fileNameTxt.Text, // задає ім'я створеного файлу, можна реалізувати те, що користувач буде вводити ім'я в textbox сам
+                Name = "Новий файл",
                 MimeType = "application/vnd.google-apps.spreadsheet"
             };
             var request = helper.driveService.Files.Create(fileMetadata);
@@ -99,31 +99,13 @@ namespace TestForm2
 
             Tools.SheetCreation(helper, fileid);
 
+
+            //////////////////////
             var values = helper.GetMarksAndNickOfEachStudent();
             var range1 = "A";
-
-            var value = values[0].ToList();
-            List<string> finalValueList = value.ConvertAll(x => x.ToString());
             var sheetreq = helper.sheetService.Spreadsheets.Get(fileid);
-            var respSheetreq = sheetreq.Execute();
-            var value2 = values[1].ToList();
-
-            List<string> finalValueList2 = value2.ConvertAll(x => x.ToString());
-
-            var sheetname = respSheetreq.Sheets[0].Properties.Title;
-            var sheername2 = respSheetreq.Sheets[1].Properties.Title; //виходить за межі
-            
-            int j = 1;  
-            /*
-                foreach (string item in finalValueList2) // тестова версія 
-                {
-                    string temp = range1 + j.ToString();
-                    helper.Set2(cellName: temp, value: item, sheername2, fileid);
-                    j++;
-                }
-            */
-            //int j = 1;
-
+            var respSheetreq = sheetreq.Execute();          
+            //
 
             int i = 0;
             char beginningRange = 'A';
@@ -141,23 +123,6 @@ namespace TestForm2
                 beginningRange++;
                 i++;
             }
-            /*
-            var values = helper.GetMarksAndNickOfEachStudent();
-           // IList<IList<object>> value = (IList<IList<object>>)values[0];
-            var range = "B3:D80"; 
-            var value_range_body = new ValueRange
-            {
-                Values = values,
-                MajorDimension = "COLUMNS",
-
-            };
-            
-             записує дані, однак лише масив масивів та у більше, ніж один стовпчик
-
-            var Qrequest = helper.sheetService.Spreadsheets.Values.Update(value_range_body, fileid, range);
-            Qrequest.ValueInputOption = SpreadsheetsResource.ValuesResource.UpdateRequest.ValueInputOptionEnum.USERENTERED;
-            var Qresponce=Qrequest.Execute();
-            */
         }
 
         private void txtStudents_TextChanged(object sender, EventArgs e)
