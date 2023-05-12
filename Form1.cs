@@ -88,8 +88,8 @@ namespace TestForm2
         {
             var fileMetadata = new Google.Apis.Drive.v3.Data.File()
             {
-                //Name = fileNameTxt.Text, // задає ім'я створеного файлу, можна реалізувати те, що користувач буде вводити ім'я в textbox сам
-                Name = "Новий файл",
+                Name = fileNameTxt.Text, // задає ім'я створеного файлу, можна реалізувати те, що користувач буде вводити ім'я в textbox сам
+                //Name = "Новий файл",
                 MimeType = "application/vnd.google-apps.spreadsheet"
             };
             var request = helper.driveService.Files.Create(fileMetadata);
@@ -99,31 +99,6 @@ namespace TestForm2
 
             Tools.SheetCreation(helper, fileid);
 
-            ///////////////////////
-            /*
-            // Запит на створення нового листка
-            var requestNewsheet = new Request
-            {
-                AddSheet = new AddSheetRequest
-                {
-                    Properties = new SheetProperties
-                    {
-                        Title = "New Sheet 2"
-                    }
-                }
-            };
-
-            // Створення батч-запиту
-            var batchUpdateRequest = new BatchUpdateSpreadsheetRequest
-            {
-                Requests = new List<Request> { requestNewsheet }
-            };
-
-            // Виклик сервісу для створення листка
-            SpreadsheetsResource.BatchUpdateRequest batchUpdate = helper.sheetService.Spreadsheets.BatchUpdate(batchUpdateRequest, fileid);
-            BatchUpdateSpreadsheetResponse batchUpdateResponse = batchUpdate.Execute();
-            */
-            //////////////////////
             var values = helper.GetMarksAndNickOfEachStudent();
             var range1 = "A";
 
