@@ -116,7 +116,7 @@ namespace TestForm2
                 {
                     Thread.Sleep(700); // задля зменшення кількості запитів
                     string cell = beginningRange.ToString() + j.ToString(); // клітинка, у яку будуть вставлятися дані
-                    helper.Set2(cellName: cell, value: smth, respSheetreq.Sheets[i].Properties.Title, fileid); // вставлення даних
+                    helper.SetCell(cellName: cell, value: smth, respSheetreq.Sheets[i].Properties.Title, fileid); // вставлення даних
                     j++;
                 }
                 beginningRange++;

@@ -23,7 +23,6 @@ namespace TestForm2
                     }
                 }
             };
-
             // Створення батч-запиту
             var batchUpdateRequest = new BatchUpdateSpreadsheetRequest
             {
