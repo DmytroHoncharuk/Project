@@ -119,5 +119,10 @@ namespace TestForm2
         {
 
         }
+
+        private void lblStatus_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

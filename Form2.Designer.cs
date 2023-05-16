@@ -56,6 +56,7 @@
             this.lblStatus.Size = new System.Drawing.Size(240, 32);
             this.lblStatus.TabIndex = 1;
             this.lblStatus.Text = "Статис авторизації";
+            this.lblStatus.Click += new System.EventHandler(this.lblStatus_Click);
             // 
             // textBoxStatusLogin
             // 
