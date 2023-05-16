@@ -53,9 +53,9 @@
             this.lblStatus.Font = new System.Drawing.Font("TT Firs Neue", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.lblStatus.Location = new System.Drawing.Point(233, 42);
             this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Size = new System.Drawing.Size(240, 32);
+            this.lblStatus.Size = new System.Drawing.Size(239, 32);
             this.lblStatus.TabIndex = 1;
-            this.lblStatus.Text = "Статис авторизації";
+            this.lblStatus.Text = "Статус авторизації";
             this.lblStatus.Click += new System.EventHandler(this.lblStatus_Click);
             // 
             // textBoxStatusLogin

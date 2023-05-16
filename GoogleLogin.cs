@@ -53,7 +53,7 @@ namespace TestForm2
                     // После получения учетных данных с помощью Google API Console сохраните их в файле credentials.json.
                     string credPath = "token.json";
                     credentials = GoogleWebAuthorizationBroker.AuthorizeAsync(
-                        GoogleClientSecrets.Load(stream).Secrets,
+                        GoogleClientSecrets.FromStream(stream).Secrets,
                         Scopes,
                         "user",
                         CancellationToken.None,
