@@ -46,17 +46,6 @@ namespace TestForm2
             get;
             private set;
         } = new string[] {DriveService.Scope.Drive, SheetsService.Scope.Spreadsheets};
-        internal void DisplayStudentFromGroup(string group, ref TextBox textBox, List<List<string>> listOfStudent)
-        {
-            textBox.Clear();
-            for (int i = 0; i < listOfStudent[0].Count; i++)
-            {
-                if (listOfStudent[0][i] == group)
-                {
-                    textBox.Text+= listOfStudent[1][i] + Environment.NewLine;
-                }
-            }
-        }
 
         internal string Get(string cellName)
         {
@@ -65,7 +54,7 @@ namespace TestForm2
             var response = request.Execute();
             return response.Values?.First()?.First()?.ToString();
         }
-        internal List<List<string>>/*IList<IList<object>>*/ GetStudent()
+      /*  internal List<List<string>> GetStudent()
         {
             var range1 = this.sheetName + "!" + "E" + ":" + "E";
             var range2 = this.sheetName + "!" + "C" + ":" + "C";
@@ -84,7 +73,17 @@ namespace TestForm2
             List<List<string>> finalList = new List<List<string>>() { Student_Group_As_String, Student_Name_As_String };
             return finalList; 
         }
+        */
         internal List<List<string>> GetMarksAndNickOfEachStudent(string sheetName)
+        {
+            var rangeForName = sheetName + "!" + "E" + ":" + "E";
+            var rangeForNickname = sheetName + "!" + "H" + ":" + "H";
+            var studentName = GetListRequest(rangeForName);
+            var studentNickName = GetListRequest(rangeForNickname);
+            List<List<string>> list_Of_Student_Name_and_Nickname = new List<List<string>>() { studentName, studentNickName };
+            return list_Of_Student_Name_and_Nickname;
+        }
+        internal List<List<string>> GetStudentDataFromTestResults(string sheetName)
         {
             var rangeForName = sheetName + "!" + "E" + ":" + "E";
             var rangeForNickname = sheetName + "!" + "H" + ":" + "H";
