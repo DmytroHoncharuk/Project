@@ -38,6 +38,10 @@ namespace TestForm2
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
+            //this.helper = new GoogleHelper(Properties.Settings.Default.GoogleToken, txtNameSheets.Text /*Properties.Settings.Default.SheetFileNeme*/);
+
+
+
             this.helper = new GoogleLogin(this); 
 
             bool succsess = this.helper.Login().Result;

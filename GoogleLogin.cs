@@ -28,9 +28,16 @@ namespace TestForm2
             }
         }
 
+        public string[] Scopes
+        {
+            get;
+            private set;
+        } = new string[] { DriveService.Scope.Drive, SheetsService.Scope.Spreadsheets };
+
+
 
         // Поток OAuth 2.0, используемый для авторизации пользователя.
-        static string[] Scopes = { DriveService.Scope.DriveReadonly };
+        //static string[] Scopes = { DriveService.Scope.DriveReadonly };
         static string ApplicationName = "TestLogin";
 
         public GoogleLogin(Form2 form2)
@@ -60,6 +67,29 @@ namespace TestForm2
                         new NullDataStore()).Result;
                     Console.WriteLine("Credential file saved to: " + credPath);
                 }
+
+
+
+                //using (var stream = 
+                //    new FileStream("client_secrets.json", FileMode.Open, FileAccess.Read))
+                //{
+                //    // Файл credentials.json содержит учетные данные OAuth 2.0, полученные от Google API Console.
+                //    // После получения учетных данных с помощью Google API Console сохраните их в файле credentials.json.
+                //    string credPath = "token.json";
+                //    this.credentials = GoogleWebAuthorizationBroker.AuthorizeAsync(
+                //        GoogleClientSecrets.Load(stream).Secrets,
+                //        this.Scopes,
+                //        "user",
+                //        CancellationToken.None,
+                //        new NullDataStore()).Result;
+                //    Console.WriteLine("Credential file saved to: " + credPath);
+                //}
+
+
+
+
+
+
 
                 /// підключення до диску 
                 var driveServiceTemp = new DriveService(new Google.Apis.Services.BaseClientService.Initializer()
