@@ -34,7 +34,12 @@ namespace TestForm2
         public IList<Google.Apis.Drive.v3.Data.File> Files
         { get; set; }
         public SheetsService SheetService
-        { get; }
+        {
+            get
+            {
+                return sheetService;
+            }
+        }
         public DriveService DriveService
         {
             get;

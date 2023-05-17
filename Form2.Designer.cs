@@ -35,6 +35,11 @@
             this.btnMakeTextBox = new System.Windows.Forms.Button();
             this.txtNumOfTextBox = new System.Windows.Forms.TextBox();
             this.btnVerifySheets = new System.Windows.Forms.Button();
+            this.Get = new System.Windows.Forms.Button();
+            this.txtCellGetValue = new System.Windows.Forms.TextBox();
+            this.txtCellNameGet = new System.Windows.Forms.TextBox();
+            this.textBoxSheetNumber = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnLogin
@@ -109,11 +114,58 @@
             this.btnVerifySheets.UseVisualStyleBackColor = true;
             this.btnVerifySheets.Click += new System.EventHandler(this.btnVerifySheets_Click);
             // 
+            // Get
+            // 
+            this.Get.Enabled = false;
+            this.Get.Location = new System.Drawing.Point(716, 197);
+            this.Get.Name = "Get";
+            this.Get.Size = new System.Drawing.Size(151, 22);
+            this.Get.TabIndex = 23;
+            this.Get.Text = "Get";
+            this.Get.UseVisualStyleBackColor = true;
+            this.Get.Click += new System.EventHandler(this.Get_Click);
+            // 
+            // txtCellGetValue
+            // 
+            this.txtCellGetValue.Location = new System.Drawing.Point(873, 197);
+            this.txtCellGetValue.Name = "txtCellGetValue";
+            this.txtCellGetValue.Size = new System.Drawing.Size(151, 22);
+            this.txtCellGetValue.TabIndex = 22;
+            // 
+            // txtCellNameGet
+            // 
+            this.txtCellNameGet.Location = new System.Drawing.Point(560, 197);
+            this.txtCellNameGet.Name = "txtCellNameGet";
+            this.txtCellNameGet.Size = new System.Drawing.Size(151, 22);
+            this.txtCellNameGet.TabIndex = 21;
+            // 
+            // textBoxSheetNumber
+            // 
+            this.textBoxSheetNumber.Location = new System.Drawing.Point(560, 169);
+            this.textBoxSheetNumber.Name = "textBoxSheetNumber";
+            this.textBoxSheetNumber.Size = new System.Drawing.Size(151, 22);
+            this.textBoxSheetNumber.TabIndex = 24;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(727, 169);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(247, 16);
+            this.label1.TabIndex = 25;
+            this.label1.Text = "ввести номер табл в списку таблиць";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1049, 450);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.textBoxSheetNumber);
+            this.Controls.Add(this.Get);
+            this.Controls.Add(this.txtCellGetValue);
+            this.Controls.Add(this.txtCellNameGet);
             this.Controls.Add(this.btnVerifySheets);
             this.Controls.Add(this.LblNumberTest);
             this.Controls.Add(this.btnMakeTextBox);
@@ -138,5 +190,10 @@
         private System.Windows.Forms.Button btnMakeTextBox;
         private System.Windows.Forms.TextBox txtNumOfTextBox;
         private System.Windows.Forms.Button btnVerifySheets;
+        private System.Windows.Forms.Button Get;
+        private System.Windows.Forms.TextBox txtCellGetValue;
+        private System.Windows.Forms.TextBox txtCellNameGet;
+        private System.Windows.Forms.TextBox textBoxSheetNumber;
+        private System.Windows.Forms.Label label1;
     }
 }

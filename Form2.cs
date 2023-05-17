@@ -48,6 +48,10 @@ namespace TestForm2
             Maker = new Maker(textBoxes, checkBoxes, this);
             btnMakeTextBox.Enabled = succsess;
 
+            Get.Enabled = succsess;
+
+
+
             if (succsess)
             {
                 textBoxStatusLogin.Text = "Авторизовано";
@@ -125,6 +129,19 @@ namespace TestForm2
         }
 
         private void lblStatus_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Get_Click(object sender, EventArgs e)
+        {
+            int number_sheet = int.Parse(textBoxSheetNumber.Text); 
+
+            var result = helper.Get(cellName: txtCellNameGet.Text, helper.Services.Sheets[number_sheet]);
+            txtCellGetValue.Text = result;
+        }
+
+        private void label1_Click(object sender, EventArgs e)
         {
 
         }

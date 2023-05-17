@@ -9,7 +9,7 @@ namespace TestForm2
     public  class Sheet
     {
         string sheetFileName;
-        readonly string  sheetID;
+        readonly string  sheetFileID;
 
         public string SheetFileName
         { 
@@ -22,17 +22,17 @@ namespace TestForm2
             }
         
         }
-        public string SheetID
+        public string SheetFileID
         {
             get
             {
-            return sheetID; }
+            return sheetFileID; }
         }
 
-        public Sheet(string sheetFileName, string sheetID)
+        public Sheet(string sheetFileName, string sheetFileID)
         {
             this.sheetFileName = sheetFileName;
-            this.sheetID = sheetID;
+            this.sheetFileID = sheetFileID;
             
         }
     }
