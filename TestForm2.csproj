@@ -54,7 +54,6 @@
     <Compile Include="Form2.Designer.cs">
       <DependentUpon>Form2.cs</DependentUpon>
     </Compile>
-    <Compile Include="GoogleHelper.cs" />
     <Compile Include="GoogleLogin.cs" />
     <Compile Include="PersonDetection.cs" />
     <Compile Include="Program.cs" />

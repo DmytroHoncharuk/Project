@@ -8,10 +8,10 @@ namespace TestForm2
 {
     public  class Sheet
     {
-        string sheetFileName;
-        readonly string  sheetFileID;
+        private string sheetFileName;
+        private readonly string  sheetFileID;
 
-        public string SheetFileName
+        public string FileName
         { 
             get
             {
@@ -22,7 +22,7 @@ namespace TestForm2
             }
         
         }
-        public string SheetFileID
+        public string FileID
         {
             get
             {

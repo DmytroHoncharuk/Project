@@ -148,7 +148,7 @@ namespace TestForm2
         {
             int number_sheet = int.Parse(textBoxSheetNumber.Text); 
 
-            var result = helper.Get(cellName: txtCellNameGet.Text, helper.Services.Sheets[number_sheet]);
+            var result = helper.services.Get(cellName: txtCellNameGet.Text, helper.Services.Sheets[number_sheet]);
             txtCellGetValue.Text = result;
         }
 

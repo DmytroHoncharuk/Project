@@ -128,16 +128,16 @@ namespace TestForm2
         internal string Get(string cellName, Sheet sheet)
         {
             string sheetName = "";
-            if (!string.IsNullOrEmpty(sheet.SheetFileID))
+            if (!string.IsNullOrEmpty(sheet.FileID))
             {
 
-                var sheetRequest = SheetService.Spreadsheets.Get(sheet.SheetFileID);
+                var sheetRequest = SheetService.Spreadsheets.Get(sheet.FileID);
                 var sheetResponse = sheetRequest.Execute();
 
                 sheetName = sheetResponse.Sheets[0].Properties.Title;
             }
             var range = sheetName + "!" + cellName + ":" + cellName;
-            var request = .Spreadsheets.Values.Get(sheet.SheetFileID, range);
+            var request = .Spreadsheets.Values.Get(sheet.FileID, range);
             var response = request.Execute();
             return response.Values?.First()?.First()?.ToString();
         }
