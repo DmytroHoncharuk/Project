@@ -163,6 +163,7 @@ namespace TestForm2
 
 
             //////////////////////
+            /*
             var values = helper.GetMarksAndNickOfEachStudent("А1");
             var sheetreq = helper.sheetService.Spreadsheets.Get(fileid);
             var respSheetreq = sheetreq.Execute();
@@ -183,7 +184,7 @@ namespace TestForm2
                 }
                 beginningRange++;
                 i++;
-            }
+            }*/
         }
 
     }
