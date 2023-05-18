@@ -19,7 +19,7 @@ namespace TestForm2
         private Maker Maker;
         public List<TextBox> textBoxes = new List<TextBox>();
         public List<CheckBox> checkBoxes = new List<CheckBox>();
-        private Services services;
+       ///private Services services;
         public GoogleLogin Helper
         { 
             get
@@ -31,6 +31,16 @@ namespace TestForm2
             }
         
         }
+
+        //public Services Services
+        //{
+        //    get
+        //    {
+        //        return services;
+        //    }
+          
+        
+        //}
 
         public Form2()
         {
@@ -156,12 +166,13 @@ namespace TestForm2
             };
 
 
-            var test = services.SheetService;
-            var request = helper.driveService.Files.Create(fileMetadata);
+            var test = helper.Services.SheetService;
+            var request = helper.Services.driveService.Files.Create(fileMetadata);
             request.Fields = "id";
             var file = request.Execute();
             var fileid = file.Id;
-            Tools.SheetCreation(services, fileid, "Неліквідні випадки");
+            Tools.SheetCreation(helper.Services, fileid, "Неліквідні випадки");
+
 
 
             //////////////////////
