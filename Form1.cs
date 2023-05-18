@@ -102,9 +102,10 @@ namespace TestForm2
             var values = helper.GetMarksAndNickOfEachStudent("А1");
             var sheetreq = helper.sheetService.Spreadsheets.Get(fileid);
             var respSheetreq = sheetreq.Execute();
-            //
+            
             int j;
             int i = 0;
+            var a = respSheetreq.Sheets[i].Properties.Title;
             char beginningRange = 'A';
             foreach (List<string> item in values) // вставляє нік телеги на другий листок, ПІБ на перший
             {
