@@ -11,7 +11,7 @@ namespace TestForm2
 
     public static class Tools
     {
-        internal static void SheetCreation(GoogleHelper helper, string fileid, string nameOfSheet)
+        internal static void SheetCreation(Services services, string fileid, string nameOfSheet)
         {
             var requestNewsheet = new Request
             {
@@ -29,7 +29,7 @@ namespace TestForm2
                 Requests = new List<Request> { requestNewsheet }
             };
             // Виклик сервісу для створення листка
-            SpreadsheetsResource.BatchUpdateRequest batchUpdate = helper.sheetService.Spreadsheets.BatchUpdate(batchUpdateRequest, fileid);
+            SpreadsheetsResource.BatchUpdateRequest batchUpdate = services.SheetService.Spreadsheets.BatchUpdate(batchUpdateRequest, fileid);
             BatchUpdateSpreadsheetResponse batchUpdateResponse = batchUpdate.Execute();
         }
     }

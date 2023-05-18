@@ -19,7 +19,7 @@ namespace TestForm2
         private Maker Maker;
         public List<TextBox> textBoxes = new List<TextBox>();
         public List<CheckBox> checkBoxes = new List<CheckBox>();
-
+        private Services services;
         public GoogleLogin Helper
         { 
             get
@@ -154,7 +154,8 @@ namespace TestForm2
                 Name = fileNameTxt.Text, // задає ім'я створеного файлу, можна реалізувати те, що користувач буде вводити ім'я в textbox сам
                 MimeType = "application/vnd.google-apps.spreadsheet"
             };
-            var request = helper.driveService.Files.Create(fileMetadata);
+            //var request = .driveService.Files.Create(fileMetadata);
+            var request = services.DriveService.Files.Create(fileMetadata);
             request.Fields = "id";
             var file = request.Execute();
             var fileid = file.Id;
