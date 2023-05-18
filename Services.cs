@@ -125,7 +125,22 @@ namespace TestForm2
             List<string> informationFromSheetAsString = informationFromSheet.ConvertAll(x => x.ToString());
             return informationFromSheetAsString;
         }
+        internal string Get(string cellName, Sheet sheet)
+        {
+            string sheetName = "";
+            if (!string.IsNullOrEmpty(sheet.SheetFileID))
+            {
 
+                var sheetRequest = SheetService.Spreadsheets.Get(sheet.SheetFileID);
+                var sheetResponse = sheetRequest.Execute();
+
+                sheetName = sheetResponse.Sheets[0].Properties.Title;
+            }
+            var range = sheetName + "!" + cellName + ":" + cellName;
+            var request = .Spreadsheets.Values.Get(sheet.SheetFileID, range);
+            var response = request.Execute();
+            return response.Values?.First()?.First()?.ToString();
+        }
         internal void SetCell(string cellName, string value, string sheetName, string fileid)
         {
             var range = sheetName + "!" + cellName + ":" + cellName;

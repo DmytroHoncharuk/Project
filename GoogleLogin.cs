@@ -20,8 +20,6 @@ namespace TestForm2
 
         private UserCredential credentials;
         public Services services;
-        //public DriveService driveService;
-        //public SheetsService sheetService;
         public Services Services
         {
             get
@@ -72,28 +70,6 @@ namespace TestForm2
                         new NullDataStore()).Result;
                     Console.WriteLine("Credential file saved to: " + credPath);
                 }
-
-
-
-                //using (var stream = 
-                //    new FileStream("client_secrets.json", FileMode.Open, FileAccess.Read))
-                //{
-                //    // Файл credentials.json содержит учетные данные OAuth 2.0, полученные от Google API Console.
-                //    // После получения учетных данных с помощью Google API Console сохраните их в файле credentials.json.
-                //    string credPath = "token.json";
-                //    this.credentials = GoogleWebAuthorizationBroker.AuthorizeAsync(
-                //        GoogleClientSecrets.Load(stream).Secrets,
-                //        this.Scopes,
-                //        "user",
-                //        CancellationToken.None,
-                //        new NullDataStore()).Result;
-                //    Console.WriteLine("Credential file saved to: " + credPath);
-                //}
-
-
-
-
-
 
 
                 /// підключення до диску 
