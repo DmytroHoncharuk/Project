@@ -1,4 +1,5 @@
-﻿using Google.Apis.Drive.v3;
+﻿using Google.Apis.Auth.OAuth2;
+using Google.Apis.Drive.v3;
 using Google.Apis.Sheets.v4;
 using Google.Apis.Sheets.v4.Data;
 using System;
@@ -15,8 +16,8 @@ namespace TestForm2
     {
         private Form2 form; 
         private SheetsService sheetService;
-        private DriveService driveService;
-
+        public DriveService driveService;
+        private UserCredential credentials;
         private IList<Google.Apis.Drive.v3.Data.File> files; 
         private List<Sheet> sheets = new List<Sheet>();
 
@@ -34,19 +35,23 @@ namespace TestForm2
         }
         public IList<Google.Apis.Drive.v3.Data.File> Files
         { get; set; }
+        
         public SheetsService SheetService
         {
             get
             {
-                return sheetService;
+                return this.sheetService;
             }
         }
         public DriveService DriveService
         {
-            get;
+            get
+            {
+                return this.driveService;
+            }
         }
-
-        public Services(DriveService driveService , SheetsService sheetService, Form2 form  )
+        
+        public Services(DriveService driveService , SheetsService sheetService, Form2 form  ) // не працює 
         {
         this.sheetService = sheetService;
         this.driveService = driveService;

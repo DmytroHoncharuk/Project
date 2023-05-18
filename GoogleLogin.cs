@@ -19,7 +19,7 @@ namespace TestForm2
         private Form2 Form2;
 
         private UserCredential credentials;
-        private Services services;
+        public Services services;
         public DriveService driveService;
         public SheetsService sheetService;
         public Services Services
@@ -108,9 +108,9 @@ namespace TestForm2
                     HttpClientInitializer = this.credentials,
                     ApplicationName = ApplicationName,
                 });
-                //services = new Services(driveServiceTemp, sheetServiceTemp,Form2);
+                services = new Services(driveService, sheetService,Form2);
 
-                //services.Files = Services.GetFiles(); 
+                services.Files = Services.GetFiles(); 
 
                 return true;
 
