@@ -145,5 +145,10 @@ namespace TestForm2
         {
 
         }
+
+        private void btnOfNewFileCreation_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
