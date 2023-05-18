@@ -54,26 +54,7 @@ namespace TestForm2
             var response = request.Execute();
             return response.Values?.First()?.First()?.ToString();
         }
-      /*  internal List<List<string>> GetStudent()
-        {
-            var range1 = this.sheetName + "!" + "E" + ":" + "E";
-            var range2 = this.sheetName + "!" + "C" + ":" + "C";
-            var request = this.sheetService.Spreadsheets.Values.Get(spreadsheetId: this.sheetFileId, range: range1);
-            var response = request.Execute();
 
-            List<object> StudentsGroup = response.Values.SelectMany(x => x).ToList();
-            List<string> Student_Group_As_String = StudentsGroup.ConvertAll(x => x.ToString());
-            ////////////////////////////////////////////////////////////////
-            request = this.sheetService.Spreadsheets.Values.Get(spreadsheetId: this.sheetFileId, range: range2);
-            response = request.Execute();
-
-            List<object> StudentsName = response.Values.SelectMany(x => x).ToList();
-            List<string> Student_Name_As_String = StudentsName.ConvertAll(x => x.ToString());
-
-            List<List<string>> finalList = new List<List<string>>() { Student_Group_As_String, Student_Name_As_String };
-            return finalList; 
-        }
-        */
         internal List<List<string>> GetMarksAndNickOfEachStudent(string sheetName)
         {
             var rangeForName = sheetName + "!" + "E" + ":" + "E";
