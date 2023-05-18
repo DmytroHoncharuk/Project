@@ -7,6 +7,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -148,7 +149,41 @@ namespace TestForm2
 
         private void btnOfNewFileCreation_Click(object sender, EventArgs e)
         {
+            var fileMetadata = new Google.Apis.Drive.v3.Data.File()
+            {
+                Name = fileNameTxt.Text, // задає ім'я створеного файлу, можна реалізувати те, що користувач буде вводити ім'я в textbox сам
+                MimeType = "application/vnd.google-apps.spreadsheet"
+            };
+            var request = helper.driveService.Files.Create(fileMetadata);
+            request.Fields = "id";
+            var file = request.Execute();
+            var fileid = file.Id;
+            Tools.SheetCreation(helper, fileid, "Неліквідні випадки");
 
+
+            //////////////////////
+            var values = helper.GetMarksAndNickOfEachStudent("А1");
+            var sheetreq = helper.sheetService.Spreadsheets.Get(fileid);
+            var respSheetreq = sheetreq.Execute();
+            //
+            int j;
+            int i = 0;
+            char beginningRange = 'A';
+            foreach (List<string> item in values) // вставляє нік телеги на другий листок, ПІБ на перший
+            {
+                Thread.Sleep(700);
+                j = 1;
+                foreach (var smth in item)
+                {
+                    Thread.Sleep(700); // задля зменшення кількості запитів
+                    string cell = beginningRange.ToString() + j.ToString(); // клітинка, у яку будуть вставлятися дані
+                    helper.SetCell(cellName: cell, value: smth, respSheetreq.Sheets[i].Properties.Title, fileid); // вставлення даних
+                    j++;
+                }
+                beginningRange++;
+                i++;
+            }
         }
+
     }
 }
