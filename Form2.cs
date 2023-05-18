@@ -151,10 +151,9 @@ namespace TestForm2
         {
             var fileMetadata = new Google.Apis.Drive.v3.Data.File()
             {
-                Name = fileNameTxt.Text, // задає ім'я створеного файлу, можна реалізувати те, що користувач буде вводити ім'я в textbox сам
+                Name = "New file", // задає ім'я створеного файлу, можна реалізувати те, що користувач буде вводити ім'я в textbox сам
                 MimeType = "application/vnd.google-apps.spreadsheet"
             };
-            //var request = .driveService.Files.Create(fileMetadata);
             var request = services.DriveService.Files.Create(fileMetadata);
             request.Fields = "id";
             var file = request.Execute();

@@ -77,12 +77,12 @@ namespace TestForm2
                 Sheet sheet = new Sheet(SheetFileName, sheetId);
                 Sheets.Add(sheet);
                 form.checkBoxes[index].Checked = true;
-                form.textBoxes[index].BackColor = Color.LightGreen;
+                form.textBoxes[index].BackColor = System.Drawing.Color.LightGreen;
 
             }
             else
             {
-                form.textBoxes[index].BackColor = Color.LightCoral; 
+                form.textBoxes[index].BackColor = System.Drawing.Color.LightCoral; 
             }
 
         }
@@ -123,7 +123,6 @@ namespace TestForm2
 
         internal void SetCell(string cellName, string value, string sheetName, string fileid)
         {
-            //var range = sheetName + "!" + cellName + ":" + cellName;
             var range = sheetName + "!" + cellName + ":" + cellName;
             var values = new List<List<object>> { new List<object> { value } };
 
