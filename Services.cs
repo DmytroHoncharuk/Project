@@ -1,5 +1,6 @@
 ﻿using Google.Apis.Drive.v3;
 using Google.Apis.Sheets.v4;
+using Google.Apis.Sheets.v4.Data;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -102,6 +103,58 @@ namespace TestForm2
             return false;
         }
 
+
+        internal List<List<string>> GetMarksAndNickOfEachStudent(string sheetName)
+        {
+            var rangeForName = sheetName + "!" + "E" + ":" + "E";
+            var rangeForNickname = sheetName + "!" + "H" + ":" + "H";
+            var studentName = GetListRequest(rangeForName);
+            var studentNickName = GetListRequest(rangeForNickname);
+            List<List<string>> list_Of_Student_Name_and_Nickname = new List<List<string>>() { studentName, studentNickName };
+            return list_Of_Student_Name_and_Nickname;
+        }
+        internal List<List<string>> GetStudentDataFromTestResults(string sheetName)
+        {
+            var rangeForName = sheetName + "!" + "E" + ":" + "E";
+            var rangeForNickname = sheetName + "!" + "H" + ":" + "H";
+            var studentName = GetListRequest(rangeForName);
+            var studentNickName = GetListRequest(rangeForNickname);
+            List<List<string>> list_Of_Student_Name_and_Nickname = new List<List<string>>() { studentName, studentNickName };
+            return list_Of_Student_Name_and_Nickname;
+        }
+        internal List<string> GetListRequest(string range, string fileId)
+        {
+            var request = sheetService.Spreadsheets.Values.Get(spreadsheetId: this.sheetFileId, range: range);
+            var response = request.Execute();
+            List<object> informationFromSheet = response.Values.SelectMany(x => x).ToList();
+            List<string> informationFromSheetAsString = informationFromSheet.ConvertAll(x => x.ToString());
+            return informationFromSheetAsString;
+        }
+        internal void Set(string cellName, string value)
+        {
+            var range = this.sheetName + "!" + cellName + ":" + cellName;
+            var values = new List<List<object>> { new List<object> { value } };
+
+            var request = this.sheetService.Spreadsheets.Values.Update(
+                new ValueRange { Values = new List<IList<object>>(values) },
+                spreadsheetId: this.sheetFileId, range: range
+                );
+            request.ValueInputOption = SpreadsheetsResource.ValuesResource.UpdateRequest.ValueInputOptionEnum.USERENTERED;
+            var response = request.Execute();
+        }
+        internal void SetCell(string cellName, string value, string sheetName, string fileid)
+        {
+            //var range = sheetName + "!" + cellName + ":" + cellName;
+            var range = sheetName + "!" + cellName + ":" + cellName;
+            var values = new List<List<object>> { new List<object> { value } };
+
+            var request = this.sheetService.Spreadsheets.Values.Update(
+                new ValueRange { Values = new List<IList<object>>(values) },
+                spreadsheetId: fileid, range: range
+                );
+            request.ValueInputOption = SpreadsheetsResource.ValuesResource.UpdateRequest.ValueInputOptionEnum.USERENTERED;
+            var response = request.Execute();
+        }
 
     }
 }
