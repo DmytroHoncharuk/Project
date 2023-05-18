@@ -87,6 +87,7 @@ namespace TestForm2
                     HttpClientInitializer = this.credentials,
                     ApplicationName = ApplicationName,
                 });
+
                 Services = new Services(driveService, sheetService,Form2);
 
                 services.Files = Services.GetFiles(); 
@@ -98,28 +99,10 @@ namespace TestForm2
             {
 
                 return false;
-
                 throw;
             }
-
-
         }
 
-        internal string Get(string cellName, Sheet sheet)
-        {
-            string sheetName = ""; 
-            if (!string.IsNullOrEmpty(sheet.SheetFileID))
-            {
 
-                var sheetRequest = services.SheetService.Spreadsheets.Get(sheet.SheetFileID);
-                var sheetResponse = sheetRequest.Execute();
-
-                sheetName = sheetResponse.Sheets[0].Properties.Title;
-            }
-            var range = sheetName + "!" + cellName + ":" + cellName;
-            var request = services.SheetService.Spreadsheets.Values.Get(sheet.SheetFileID, range);
-            var response = request.Execute();
-            return response.Values?.First()?.First()?.ToString();
-        }
     }
 }
