@@ -56,11 +56,13 @@
     </Compile>
     <Compile Include="GoogleHelper.cs" />
     <Compile Include="GoogleLogin.cs" />
+    <Compile Include="PersonDetection.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Maker.cs" />
     <Compile Include="Sheet.cs" />
     <Compile Include="Services.cs" />
+    <Compile Include="Tools.cs" />
     <EmbeddedResource Include="Form2.resx">
       <DependentUpon>Form2.cs</DependentUpon>
     </EmbeddedResource>
