@@ -22,8 +22,8 @@ namespace TestForm2
         private readonly string token;
         private readonly string sheetFileName;
         private UserCredential credentials;
-        private DriveService driveService;
-        private SheetsService sheetService;
+        public DriveService driveService;
+        public SheetsService sheetService;
         private string sheetFileId;
         private string sheetName;
 

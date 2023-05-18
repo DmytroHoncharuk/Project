@@ -154,11 +154,11 @@ namespace TestForm2
                 Name = "New file", // задає ім'я створеного файлу, можна реалізувати те, що користувач буде вводити ім'я в textbox сам
                 MimeType = "application/vnd.google-apps.spreadsheet"
             };
-            var request = services.DriveService.Files.Create(fileMetadata);
+            var request = helper.driveService.Files.Create(fileMetadata);
             request.Fields = "id";
             var file = request.Execute();
             var fileid = file.Id;
-            Tools.SheetCreation(services, fileid, "Неліквідні випадки");
+            //Tools.SheetCreation(services, fileid, "Неліквідні випадки");
 
 
             //////////////////////

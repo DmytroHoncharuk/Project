@@ -20,6 +20,8 @@ namespace TestForm2
 
         private UserCredential credentials;
         private Services services;
+        public DriveService driveService;
+        public SheetsService sheetService;
         public Services Services
         {
             get
@@ -92,7 +94,7 @@ namespace TestForm2
 
 
                 /// підключення до диску 
-                var driveServiceTemp = new DriveService(new Google.Apis.Services.BaseClientService.Initializer()
+                this.driveService = new DriveService(new Google.Apis.Services.BaseClientService.Initializer()
                 {
                     HttpClientInitializer = this.credentials,
                     ApplicationName = ApplicationName,
@@ -101,14 +103,14 @@ namespace TestForm2
                 /// підключення до таблиць
                 /// 
 
-                var sheetServiceTemp = new SheetsService(new Google.Apis.Services.BaseClientService.Initializer()
+                this.sheetService = new SheetsService(new Google.Apis.Services.BaseClientService.Initializer()
                 {
                     HttpClientInitializer = this.credentials,
                     ApplicationName = ApplicationName,
                 });
-                services = new Services(driveServiceTemp, sheetServiceTemp,Form2);
+                //services = new Services(driveServiceTemp, sheetServiceTemp,Form2);
 
-                services.Files = Services.GetFiles(); 
+                //services.Files = Services.GetFiles(); 
 
                 return true;
 
