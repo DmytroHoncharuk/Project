@@ -54,8 +54,8 @@ namespace TestForm2
 
         private void BtnGetGroup_Click(object sender, EventArgs e)
         {
-            var result = this.helper.GetStudent();
-            this.helper.DisplayStudentFromGroup(group: txtGetGroup.Text, textBox: ref txtStudents, listOfStudent: result);
+           // var result = this.helper.GetStudent();
+            //this.helper.DisplayStudentFromGroup(group: txtGetGroup.Text, textBox: ref txtStudents, listOfStudent: result);
         }
 
         private void btnMakeTextBox_Click(object sender, EventArgs e)
