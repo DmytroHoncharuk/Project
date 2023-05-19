@@ -19,7 +19,6 @@ namespace TestForm2
         private Maker Maker;
         public List<TextBox> textBoxes = new List<TextBox>();
         public List<CheckBox> checkBoxes = new List<CheckBox>();
-       ///private Services services;
         public GoogleLogin Helper
         { 
             get
@@ -175,11 +174,12 @@ namespace TestForm2
 
 
             //////////////////////
-            
-            var values = helper.GetMarksAndNickOfEachStudent("А1");
-            var sheetreq = helper.sheetService.Spreadsheets.Get(fileid);
+            var ae = helper.services.SheetService.Spreadsheets.Get(helper.services.Sheets[0].FileName);
+           // var values = helper.services.GetStudentDataFromTestResults(sheetName: helper.services.SheetService.Spreadsheets.Get(fileid).Execute().Properties.Title, sheetFileId:  ); ;
+            var sheetreq = helper.services.SheetService.Spreadsheets.Get(fileid);
             var respSheetreq = sheetreq.Execute();
             //
+            /*
             int j;
             int i = 0;
             char beginningRange = 'A';
@@ -197,7 +197,7 @@ namespace TestForm2
                 beginningRange++;
                 i++;
             }
-            var ae = helper.services.Sheets[0].
+            */
         }
 
     }
