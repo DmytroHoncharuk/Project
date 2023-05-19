@@ -125,7 +125,7 @@ namespace TestForm2
             List<string> informationFromSheetAsString = informationFromSheet.ConvertAll(x => x.ToString());
             return informationFromSheetAsString;
         }
-        internal string Get(string cellName, Sheet sheet)
+        internal string Get(string cellName, Sheet sheet) // хм
         {
             string sheetName = "";
             if (!string.IsNullOrEmpty(sheet.FileID))
@@ -137,7 +137,7 @@ namespace TestForm2
                 sheetName = sheetResponse.Sheets[0].Properties.Title;
             }
             var range = sheetName + "!" + cellName + ":" + cellName;
-            var request = .Spreadsheets.Values.Get(sheet.FileID, range);
+            var request = SheetService.Spreadsheets.Values.Get(sheet.FileID, range);
             var response = request.Execute();
             return response.Values?.First()?.First()?.ToString();
         }
