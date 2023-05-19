@@ -166,7 +166,6 @@ namespace TestForm2
             };
 
 
-            var test = helper.Services.SheetService;
             var request = helper.Services.driveService.Files.Create(fileMetadata);
             request.Fields = "id";
             var file = request.Execute();
@@ -176,7 +175,7 @@ namespace TestForm2
 
 
             //////////////////////
-            /*
+            
             var values = helper.GetMarksAndNickOfEachStudent("А1");
             var sheetreq = helper.sheetService.Spreadsheets.Get(fileid);
             var respSheetreq = sheetreq.Execute();
@@ -192,12 +191,13 @@ namespace TestForm2
                 {
                     Thread.Sleep(700); // задля зменшення кількості запитів
                     string cell = beginningRange.ToString() + j.ToString(); // клітинка, у яку будуть вставлятися дані
-                    helper.SetCell(cellName: cell, value: smth, respSheetreq.Sheets[i].Properties.Title, fileid); // вставлення даних
+                    helper.Services.SetCell(cellName: cell, value: smth, respSheetreq.Sheets[i].Properties.Title, fileid); // вставлення даних
                     j++;
                 }
                 beginningRange++;
                 i++;
-            }*/
+            }
+            var ae = helper.services.Sheets[0].
         }
 
     }
