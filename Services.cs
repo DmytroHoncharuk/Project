@@ -110,20 +110,23 @@ namespace TestForm2
 
         internal List<List<string>> GetStudentDataFromTestResults(string sheetName, string sheetFileId) // потрібно ID усієї таблиці, а не лише одного листа
         {
-            var rangeForName = sheetName + "!" + "E" + ":" + "E";
-            var rangeForNickname = sheetName + "!" + "H" + ":" + "H";
+            var rangeForPoints = sheetName + "!" + "B2" + ":" + "B";
+            var rangeForName = sheetName + "!" + "C2" + ":" + "C";
+            var rangeForNickName = sheetName + "!" + "D2" + ":" + "D";
+            var rangeForNumberOfGroup = sheetName + "!" + "E2" + ":" + "E";
+            var studentPoints = GetListRequest(rangeForPoints, sheetFileId);
             var studentName = GetListRequest(rangeForName, sheetFileId);
-            var studentNickName = GetListRequest(rangeForNickname, sheetFileId);
-            List<List<string>> list_Of_Student_Name_and_Nickname = new List<List<string>>() { studentName, studentNickName };
+            var studentNickName = GetListRequest(rangeForNickName, sheetFileId);
+            var studentGroup = GetListRequest(rangeForNumberOfGroup, sheetFileId);
+            List<List<string>> list_Of_Student_Name_and_Nickname = new List<List<string>>() { studentPoints, studentName, studentNickName, studentGroup };
             return list_Of_Student_Name_and_Nickname;
         }
         private List<string> GetGroups(string sheetName, string sheetFileId) // потрібно ID усієї таблиці, а не лише одного листа
         {
-            var range = sheetName + "!" + "E" + ":" + "E";
+            var range = sheetName + "!" + "E2" + ":" + "E";
             var listOfGroups = GetListRequest(range, sheetFileId);
             return listOfGroups;
         }
-
         internal List<string> GetGroup(string sheetName, string sheetFileId)
         {
             HashSet<string> temp = new HashSet<string>();

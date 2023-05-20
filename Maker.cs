@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 
 namespace TestForm2
 {
-    internal  class Maker 
+    internal class Maker
     {
         private Form parentForm;
         private List<TextBox> textBoxes;
@@ -17,7 +13,7 @@ namespace TestForm2
 
         public Maker(List<TextBox> textBoxes, List<CheckBox> checkBoxes, Form parentForm)
         {
-        this.textBoxes = textBoxes;
+            this.textBoxes = textBoxes;
             this.checkBoxes = checkBoxes;
 
             this.parentForm = parentForm;
@@ -25,9 +21,9 @@ namespace TestForm2
 
         public void MakeInputBox(int number, int positionX, int positionY)
         {
-            LableMake(number , positionX,  positionY + 25 );
-            TexBoxMake(number, positionX+150, positionY + 25);
-            CheckBoxMake(number, positionX + 420, positionY + 25); 
+            LableMake(number, positionX, positionY + 25);
+            TexBoxMake(number, positionX + 150, positionY + 25);
+            CheckBoxMake(number, positionX + 420, positionY + 25);
 
         }
 
@@ -37,7 +33,7 @@ namespace TestForm2
             for (int i = 0; i < number; i++)
             {
                 CheckBox checkBox = new CheckBox();
-                checkBox.Location = new Point(positionX, positionY + i * (textBoxHeight + 8));
+                checkBox.Location = new Point(positionX, positionY + i+1 * (textBoxHeight + 8));
                 checkBox.Enabled = false;
 
 
@@ -51,9 +47,9 @@ namespace TestForm2
             }
         }
 
-        public  void TexBoxMake(int numberOfTexNox, int positionX, int positionY)
+        public void TexBoxMake(int numberOfTexNox, int positionX, int positionY)
         {
-            
+
             int textBoxWidth = 250;
             int textBoxHeight = 20;
             for (int i = 0; i < numberOfTexNox; i++)
@@ -62,33 +58,31 @@ namespace TestForm2
                 textBox.Location = new Point(positionX, positionY + i * (textBoxHeight + 8));
                 textBox.Size = new Size(textBoxWidth, textBoxHeight);
                 textBoxes.Add(textBox);
-                
+
 
 
                 //parentForm.textBoxes.Add(textBox);
                 //parentForm.Controls.Add(textBox);
-                
+
             }
         }
         public void LableMake(int numberOflable, int positionX, int positionY)
         {
-            
-            
+
+            string text = "";
             int textBoxHeight = 20;
             for (int i = 0; i < numberOflable; i++)
             {
+                text = "";
                 Label label = new Label();
                 label.Font = new System.Drawing.Font("TT Firs Neue", 10F);
 
 
                 label.Location = new Point(positionX, positionY + i * (textBoxHeight + 8));
-                string text = (i + 1) + " тест";
+                if (i == 0) text = "База даних"; else text = (i + 1) + " тест";
                 label.Text = text;
-
-
                 parentForm.Controls.Add(label);
             }
         }
     }
 }
-    

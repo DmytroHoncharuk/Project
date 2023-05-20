@@ -19,27 +19,6 @@ namespace TestForm2
         private Maker Maker;
         public List<TextBox> textBoxes = new List<TextBox>();
         public List<CheckBox> checkBoxes = new List<CheckBox>();
-        public GoogleLogin Helper
-        { 
-            get
-            {
-            return helper; }
-            set
-            {
-                helper = value;
-            }
-        
-        }
-
-        //public Services Services
-        //{
-        //    get
-        //    {
-        //        return services;
-        //    }
-          
-        
-        //}
 
         public Form2()
         {
@@ -160,34 +139,35 @@ namespace TestForm2
         {
             var fileMetadata = new Google.Apis.Drive.v3.Data.File()
             {
-                Name = "New file", // задає ім'я створеного файлу, можна реалізувати те, що користувач буде вводити ім'я в textbox сам
+                Name = "New file2", // задає ім'я створеного файлу, можна реалізувати те, що користувач буде вводити ім'я в textbox сам
                 MimeType = "application/vnd.google-apps.spreadsheet",
             };
 
-
-            var request = helper.Services.driveService.Files.Create(fileMetadata);
-            request.Fields = "id";
-            var file = request.Execute();
-            var fileid = file.Id;
+            var fileid = helper.Services.driveService.Files.Create(fileMetadata).Execute().Id;
             Tools.SheetCreation(helper.Services, fileid, "Неліквідні випадки");
-
+            var ab = helper.services.GetGroup(sheetName: helper.services.SheetService.Spreadsheets.Get(helper.services.Sheets[0].FileID).Execute().Sheets[0].Properties.Title, sheetFileId: helper.services.Sheets[0].FileID);
+            foreach (string item in ab)
+                Tools.SheetCreation(helper.Services, fileid, item);
 
 
             //////////////////////
-            var ae = helper.services.SheetService.Spreadsheets.Get(helper.services.Sheets[0].FileID); // або.Title так можна отримати ім'я та id усієї таблиці
-            var aq = helper.services.SheetService.Spreadsheets.Get(helper.services.Sheets[0].FileID).Execute().Sheets[1].Properties.Title; // отримали ім'я певного листа
-            var values = helper.services.GetStudentDataFromTestResults(sheetName: helper.services.SheetService.Spreadsheets.Get(helper.services.Sheets[0].FileID).Execute().Sheets[0].Properties.Title, sheetFileId: helper.services.Sheets[0].FileID);
-            var values2 = helper.services.GetStudentDataFromTestResults(sheetName: "А1", sheetFileId: helper.services.Sheets[0].FileID);
+            // var ae = helper.services.SheetService.Spreadsheets.Get(helper.services.Sheets[0].FileID); // або.Title так можна отримати ім'я та id усієї таблиці
+            // var aq = helper.services.SheetService.Spreadsheets.Get(helper.services.Sheets[0].FileID).Execute().Sheets[1].Properties.Title; // отримали ім'я певного листа
+            // var values = helper.services.GetStudentDataFromTestResults(sheetName: helper.services.SheetService.Spreadsheets.Get(helper.services.Sheets[0].FileID).Execute().Sheets[0].Properties.Title, sheetFileId: helper.services.Sheets[0].FileID);
+            // var values2 = helper.services.GetStudentDataFromTestResults(sheetName: "А1", sheetFileId: helper.services.Sheets[0].FileID);
 
 
             /// sheetName: Get(helper.services.Sheets[0].FileID ось тут Sheets - це поле, яке ми самі створили
             /// Execute().Sheets[0].Properties.Title Sheets - це поле класу Spreadsheets, тобто поле Google API 
 
+            /// створення нових листків відповідно до груп
+
+
 
             var sheetreq = helper.services.SheetService.Spreadsheets.Get(fileid);
             var respSheetreq = sheetreq.Execute();
             //
-            
+            /*
             int j;
             int i = 0;
             char beginningRange = 'A';
@@ -205,7 +185,7 @@ namespace TestForm2
                 beginningRange++;
                 i++;
             }
-           
+           */
         }
 
     }
