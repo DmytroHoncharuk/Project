@@ -108,7 +108,7 @@ namespace TestForm2
             return false;
         }
 
-        internal List<List<string>> GetStudentDataFromTestResults(string sheetName, string sheetFileId)
+        internal List<List<string>> GetStudentDataFromTestResults(string sheetName, string sheetFileId) // потрібно ID усієї таблиці, а не лише одного листа
         {
             var rangeForName = sheetName + "!" + "E" + ":" + "E";
             var rangeForNickname = sheetName + "!" + "H" + ":" + "H";
@@ -117,6 +117,22 @@ namespace TestForm2
             List<List<string>> list_Of_Student_Name_and_Nickname = new List<List<string>>() { studentName, studentNickName };
             return list_Of_Student_Name_and_Nickname;
         }
+        private List<string> GetGroups(string sheetName, string sheetFileId) // потрібно ID усієї таблиці, а не лише одного листа
+        {
+            var range = sheetName + "!" + "E" + ":" + "E";
+            var listOfGroups = GetListRequest(range, sheetFileId);
+            return listOfGroups;
+        }
+
+        internal List<string> GetGroup(string sheetName, string sheetFileId)
+        {
+            HashSet<string> temp = new HashSet<string>();
+            foreach (var item in GetGroups(sheetName, sheetFileId))
+                temp.Add(item);
+            List<string> list = new List<string>(temp);
+            return list;
+        }
+
         internal List<string> GetListRequest(string range, string sheetFileId)
         {
             var request = sheetService.Spreadsheets.Values.Get(spreadsheetId: sheetFileId, range: range);

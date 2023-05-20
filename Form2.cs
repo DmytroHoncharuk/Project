@@ -176,7 +176,14 @@ namespace TestForm2
             //////////////////////
             var ae = helper.services.SheetService.Spreadsheets.Get(helper.services.Sheets[0].FileID); // або.Title так можна отримати ім'я та id усієї таблиці
             var aq = helper.services.SheetService.Spreadsheets.Get(helper.services.Sheets[0].FileID).Execute().Sheets[1].Properties.Title; // отримали ім'я певного листа
-            var values = helper.services.GetStudentDataFromTestResults(sheetName: helper.services.SheetService.Spreadsheets.Get(helper.services.Sheets[0].FileID).Execute().Sheets[1].Properties.Title, sheetFileId:  ); ;
+            var values = helper.services.GetStudentDataFromTestResults(sheetName: helper.services.SheetService.Spreadsheets.Get(helper.services.Sheets[0].FileID).Execute().Sheets[0].Properties.Title, sheetFileId: helper.services.Sheets[0].FileID);
+            var values2 = helper.services.GetStudentDataFromTestResults(sheetName: "А1", sheetFileId: helper.services.Sheets[0].FileID);
+
+
+            /// sheetName: Get(helper.services.Sheets[0].FileID ось тут Sheets - це поле, яке ми самі створили
+            /// Execute().Sheets[0].Properties.Title Sheets - це поле класу Spreadsheets, тобто поле Google API 
+
+
             var sheetreq = helper.services.SheetService.Spreadsheets.Get(fileid);
             var respSheetreq = sheetreq.Execute();
             //
@@ -184,7 +191,7 @@ namespace TestForm2
             int j;
             int i = 0;
             char beginningRange = 'A';
-            foreach (List<string> item in values) // вставляє нік телеги на другий листок, ПІБ на перший
+            foreach (List<string> item in values2) // вставляє нік телеги на другий листок, ПІБ на перший
             {
                 Thread.Sleep(700);
                 j = 1;
@@ -192,7 +199,7 @@ namespace TestForm2
                 {
                     Thread.Sleep(700); // задля зменшення кількості запитів
                     string cell = beginningRange.ToString() + j.ToString(); // клітинка, у яку будуть вставлятися дані
-                    helper.Services.SetCell(cellName: cell, value: smth, respSheetreq.Sheets[i].Properties.Title, fileid); // вставлення даних
+                    helper.Services.SetCell(cellName: cell, value: smth, helper.services.SheetService.Spreadsheets.Get(fileid).Execute().Sheets[i].Properties.Title, fileid); // вставлення даних
                     j++;
                 }
                 beginningRange++;
