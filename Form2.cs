@@ -175,12 +175,12 @@ namespace TestForm2
 
             //////////////////////
             var ae = helper.services.SheetService.Spreadsheets.Get(helper.services.Sheets[0].FileID); // або.Title так можна отримати ім'я та id усієї таблиці
-            var aq = helper.services.SheetService.Spreadsheets.Get(helper.services.Sheets[0].FileID).Execute().Sheets[1].Properties.Title;
-            //var values = helper.services.GetStudentDataFromTestResults(sheetName: helper.services.SheetService.Spreadsheets.Get(fileid).Execute().Properties.Title, sheetFileId:  ); ;
+            var aq = helper.services.SheetService.Spreadsheets.Get(helper.services.Sheets[0].FileID).Execute().Sheets[1].Properties.Title; // отримали ім'я певного листа
+            var values = helper.services.GetStudentDataFromTestResults(sheetName: helper.services.SheetService.Spreadsheets.Get(helper.services.Sheets[0].FileID).Execute().Sheets[1].Properties.Title, sheetFileId:  ); ;
             var sheetreq = helper.services.SheetService.Spreadsheets.Get(fileid);
             var respSheetreq = sheetreq.Execute();
             //
-            /*
+            
             int j;
             int i = 0;
             char beginningRange = 'A';
@@ -198,7 +198,7 @@ namespace TestForm2
                 beginningRange++;
                 i++;
             }
-           */
+           
         }
 
     }
