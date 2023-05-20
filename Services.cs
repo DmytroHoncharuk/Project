@@ -133,7 +133,7 @@ namespace TestForm2
             return list;
         }
 
-        internal List<string> GetListRequest(string range, string sheetFileId)
+        private List<string> GetListRequest(string range, string sheetFileId)
         {
             var request = sheetService.Spreadsheets.Values.Get(spreadsheetId: sheetFileId, range: range);
             var response = request.Execute();
