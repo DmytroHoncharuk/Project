@@ -21,6 +21,7 @@ namespace TestForm2
 
         public void MakeInputBox(int number, int positionX, int positionY)
         {
+            number++; 
             LableMake(number, positionX, positionY + 25);
             TexBoxMake(number, positionX + 150, positionY + 25);
             CheckBoxMake(number, positionX + 420, positionY + 25);
@@ -79,7 +80,7 @@ namespace TestForm2
 
 
                 label.Location = new Point(positionX, positionY + i * (textBoxHeight + 8));
-                if (i == 0) text = "База даних"; else text = (i + 1) + " тест";
+                if (i == 0) text = "База даних"; else text = (i) + " тест";
                 label.Text = text;
                 parentForm.Controls.Add(label);
             }
