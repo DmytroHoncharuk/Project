@@ -161,7 +161,7 @@ namespace TestForm2
             var fileMetadata = new Google.Apis.Drive.v3.Data.File()
             {
                 Name = "New file", // задає ім'я створеного файлу, можна реалізувати те, що користувач буде вводити ім'я в textbox сам
-                MimeType = "application/vnd.google-apps.spreadsheet"
+                MimeType = "application/vnd.google-apps.spreadsheet",
             };
 
 
@@ -174,8 +174,9 @@ namespace TestForm2
 
 
             //////////////////////
-            var ae = helper.services.SheetService.Spreadsheets.Get(helper.services.Sheets[0].FileID);
-           // var values = helper.services.GetStudentDataFromTestResults(sheetName: helper.services.SheetService.Spreadsheets.Get(fileid).Execute().Properties.Title, sheetFileId:  ); ;
+            var ae = helper.services.SheetService.Spreadsheets.Get(helper.services.Sheets[0].FileID); // або.Title так можна отримати ім'я та id усієї таблиці
+            var aq = helper.services.SheetService.Spreadsheets.Get(helper.services.Sheets[0].FileID).Execute().Sheets[1].Properties.Title;
+            //var values = helper.services.GetStudentDataFromTestResults(sheetName: helper.services.SheetService.Spreadsheets.Get(fileid).Execute().Properties.Title, sheetFileId:  ); ;
             var sheetreq = helper.services.SheetService.Spreadsheets.Get(fileid);
             var respSheetreq = sheetreq.Execute();
             //
@@ -197,7 +198,7 @@ namespace TestForm2
                 beginningRange++;
                 i++;
             }
-            */
+           */
         }
 
     }

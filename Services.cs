@@ -119,7 +119,7 @@ namespace TestForm2
         }
         internal List<string> GetListRequest(string range, string sheetFileId)
         {
-            var request = this.sheetService.Spreadsheets.Values.Get(spreadsheetId: sheetFileId, range: range);
+            var request = sheetService.Spreadsheets.Values.Get(spreadsheetId: sheetFileId, range: range);
             var response = request.Execute();
             List<object> informationFromSheet = response.Values.SelectMany(x => x).ToList();
             List<string> informationFromSheetAsString = informationFromSheet.ConvertAll(x => x.ToString());
