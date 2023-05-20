@@ -33,7 +33,7 @@ namespace TestForm2
             for (int i = 0; i < number; i++)
             {
                 CheckBox checkBox = new CheckBox();
-                checkBox.Location = new Point(positionX, positionY + i+1 * (textBoxHeight + 8));
+                checkBox.Location = new Point(positionX, positionY + i * (textBoxHeight + 8));
                 checkBox.Enabled = false;
 
 
