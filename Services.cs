@@ -117,13 +117,23 @@ namespace TestForm2
             var studentPoints = GetListRequest(rangeForPoints, sheetFileId);
             var studentName = GetListRequest(rangeForName, sheetFileId);
             var studentNickName = GetListRequest(rangeForNickName, sheetFileId);
+            
             var studentGroup = GetListRequest(rangeForNumberOfGroup, sheetFileId);
-            List<List<string>> list_Of_Student_Name_and_Nickname = new List<List<string>>() { studentPoints, studentName, studentNickName, studentGroup };
-            return list_Of_Student_Name_and_Nickname;
+            List<List<string>> list_Of_Student_Data_Test = new List<List<string>>() { studentPoints, studentName, studentNickName, studentGroup };
+            return list_Of_Student_Data_Test;
+        }
+        internal List<List<string>> GetStudentDataFromDataBase(string sheetName, string sheetFileId)
+        {
+            var rangeForName = sheetName + "!" + "E2" + ":" + "E";
+            var rangeForNickName = sheetName + "!" + "E2" + ":" + "E";
+            var studentName = GetListRequest(rangeForName, sheetFileId);
+            var studentNickName = GetListRequest(rangeForNickName, sheetFileId);
+            List<List<string>> list_Of_Student_Name_and_Nickname_DB = new List<List<string>>() { studentName, studentNickName };
+            return list_Of_Student_Name_and_Nickname_DB
         }
         private List<string> GetGroups(string sheetName, string sheetFileId) // потрібно ID усієї таблиці, а не лише одного листа
         {
-            var range = sheetName + "!" + "E2" + ":" + "E";
+            var range = sheetName + "!" + "E2" + ":" + "E300";
             var listOfGroups = GetListRequest(range, sheetFileId);
             return listOfGroups;
         }

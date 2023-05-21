@@ -19,7 +19,7 @@ namespace TestForm2
         private Form2 Form2;
 
         private UserCredential credentials;
-        public Services services;
+        private Services services;
         public Services Services
         {
             get

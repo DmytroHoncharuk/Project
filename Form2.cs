@@ -126,7 +126,7 @@ namespace TestForm2
         {
             int number_sheet = int.Parse(textBoxSheetNumber.Text); 
 
-            var result = helper.services.Get(cellName: txtCellNameGet.Text, helper.Services.Sheets[number_sheet]);
+            var result = helper.Services.Get(cellName: txtCellNameGet.Text, helper.Services.Sheets[number_sheet]);
             txtCellGetValue.Text = result;
         }
 
@@ -143,12 +143,18 @@ namespace TestForm2
                 MimeType = "application/vnd.google-apps.spreadsheet",
             };
 
+     
             var fileid = helper.Services.driveService.Files.Create(fileMetadata).Execute().Id;
             Tools.SheetCreation(helper.Services, fileid, "Неліквідні випадки");
-            var ab = helper.services.GetGroup(sheetName: helper.services.SheetService.Spreadsheets.Get(helper.services.Sheets[0].FileID).Execute().Sheets[0].Properties.Title, sheetFileId: helper.services.Sheets[0].FileID);
+            var ab = helper.Services.GetGroup(sheetName: helper.Services.SheetService.Spreadsheets.Get(helper.Services.Sheets[1].FileID).Execute().Sheets[0].Properties.Title, sheetFileId: helper.Services.Sheets[1].FileID);
             foreach (string item in ab)
                 Tools.SheetCreation(helper.Services, fileid, item);
+            // створили усі необхідні листи та саму таблицю
 
+            for (int i = 0; i < helper.Services.Sheets.Count; i++)
+            {
+
+            }
 
             //////////////////////
             // var ae = helper.services.SheetService.Spreadsheets.Get(helper.services.Sheets[0].FileID); // або.Title так можна отримати ім'я та id усієї таблиці
@@ -164,7 +170,7 @@ namespace TestForm2
 
 
 
-            var sheetreq = helper.services.SheetService.Spreadsheets.Get(fileid);
+            var sheetreq = helper.Services.SheetService.Spreadsheets.Get(fileid);
             var respSheetreq = sheetreq.Execute();
             //
             /*
