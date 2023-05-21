@@ -98,5 +98,13 @@ namespace TestForm2
                 str1 = result;
             }
         }
+
+        internal static void DeletAt( List<string> list)
+        { 
+            foreach (string str in list)
+            {
+                DeleteAt(ref str);
+            }
+        }
     }
 }
