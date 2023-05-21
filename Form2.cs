@@ -146,20 +146,22 @@ namespace TestForm2
      
             var fileid = helper.Services.driveService.Files.Create(fileMetadata).Execute().Id;
             Tools.SheetCreation(helper.Services, fileid, "Неліквідні випадки");
-            var ab = helper.Services.GetGroup(sheetName: helper.Services.SheetService.Spreadsheets.Get(helper.Services.Sheets[1].FileID).Execute().Sheets[0].Properties.Title, sheetFileId: helper.Services.Sheets[1].FileID);
+            var ab = helper.Services.GetGroup(sheetName: helper.Services.SheetService.Spreadsheets.Get(helper.Services.Sheets[1].FileID).Execute().Sheets[0].Properties.Title, sheetFileId: helper.Services.Sheets[1].FileID); //тобто друга таблиця в масиві, перший її лист
             foreach (string item in ab)
                 Tools.SheetCreation(helper.Services, fileid, item);
             // створили усі необхідні листи та саму таблицю
-
-            for (int i = 0; i < helper.Services.Sheets.Count; i++)
+            // int aq = helper.Services.SheetService.Spreadsheets.Get(helper.Services.Sheets[0].FileID).Execute().Sheets.Count; к-ть листів у певній таблиці
+            List<List<List<string>>> newlist = new List<List<List<string>>>();
+            for (int i = 2; i <10; i++) // зчитування БД
             {
-
+                newlist.Add(helper.Services.GetStudentDataFromDataBase(sheetName: helper.Services.SheetService.Spreadsheets.Get(helper.Services.Sheets[0].FileID).Execute().Sheets[i].Properties.Title, sheetFileId: helper.Services.Sheets[0].FileID));
             }
-
+            
+            int acs = 6 + 5;
             //////////////////////
             // var ae = helper.services.SheetService.Spreadsheets.Get(helper.services.Sheets[0].FileID); // або.Title так можна отримати ім'я та id усієї таблиці
             // var aq = helper.services.SheetService.Spreadsheets.Get(helper.services.Sheets[0].FileID).Execute().Sheets[1].Properties.Title; // отримали ім'я певного листа
-            // var values = helper.services.GetStudentDataFromTestResults(sheetName: helper.services.SheetService.Spreadsheets.Get(helper.services.Sheets[0].FileID).Execute().Sheets[0].Properties.Title, sheetFileId: helper.services.Sheets[0].FileID);
+             var values = helper.Services.GetStudentDataFromTestResults(sheetName: helper.Services.SheetService.Spreadsheets.Get(helper.Services.Sheets[1].FileID).Execute().Sheets[0].Properties.Title, sheetFileId: helper.Services.Sheets[1].FileID);
             // var values2 = helper.services.GetStudentDataFromTestResults(sheetName: "А1", sheetFileId: helper.services.Sheets[0].FileID);
 
 

@@ -75,9 +75,10 @@ namespace TestForm2
             int errorsCount = distances[arr1.Length, arr2.Length];
             return errorsCount <= maxAllowedErrors;
         }
-        internal static void DeleteAt(ref string str1)//видалення @ у стрічці введення
+
+        private static void DelAt(ref string str)//видалення @ у стрічці введення
         {
-            char[] arr = str1.ToCharArray();
+            char[] arr = str.ToCharArray();
             bool presenseOfAt = false;
             for (int i = 0; i < 1; i++) //arr.length
             {
@@ -95,15 +96,16 @@ namespace TestForm2
                     if (arr[i] != '\0')
                         result += arr[i];
                 }
-                str1 = result;
+                str = result;
             }
         }
-
-        internal static void DeletAt( List<string> list)
-        { 
-            foreach (string str in list)
+        internal static void DeleteAt( List<string> list)
+        {
+            for(int i = 0;i < list.Count;i++)
             {
-                DeleteAt(ref str);
+                string temp = list[i];
+                DelAt(ref temp);
+                list[i] = temp;
             }
         }
     }
