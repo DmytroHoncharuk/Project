@@ -151,13 +151,21 @@ namespace TestForm2
                 Tools.SheetCreation(helper.Services, fileid, item);
             // створили усі необхідні листи та саму таблицю
             // int aq = helper.Services.SheetService.Spreadsheets.Get(helper.Services.Sheets[0].FileID).Execute().Sheets.Count; к-ть листів у певній таблиці
-            List<List<List<string>>> newlist = new List<List<List<string>>>();
+
+            List<List<List<string>>> dataBase = new List<List<List<string>>>();
             for (int i = 2; i <10; i++) // зчитування БД
             {
-                newlist.Add(helper.Services.GetStudentDataFromDataBase(sheetName: helper.Services.SheetService.Spreadsheets.Get(helper.Services.Sheets[0].FileID).Execute().Sheets[i].Properties.Title, sheetFileId: helper.Services.Sheets[0].FileID));
+                dataBase.Add(helper.Services.GetStudentDataFromDataBase(sheetName: helper.Services.SheetService.Spreadsheets.Get(helper.Services.Sheets[0].FileID).Execute().Sheets[i].Properties.Title, sheetFileId: helper.Services.Sheets[0].FileID));
             }
             
+            List<List<List<string>>> testResults = new List<List<List<string>>>();
+            for (int i = 1; i < helper.Services.Sheets.Count; i++) //зчитування результатів тестування
+            {
+                testResults.Add(helper.Services.GetStudentDataFromTestResults(sheetName: helper.Services.SheetService.Spreadsheets.Get(helper.Services.Sheets[i].FileID).Execute().Sheets[0].Properties.Title, sheetFileId: helper.Services.Sheets[i].FileID));
+   
+            }
             //////////////////////
+            var abf = 5 + 3;
             // var ae = helper.services.SheetService.Spreadsheets.Get(helper.services.Sheets[0].FileID); // або.Title так можна отримати ім'я та id усієї таблиці
             // var aq = helper.services.SheetService.Spreadsheets.Get(helper.services.Sheets[0].FileID).Execute().Sheets[1].Properties.Title; // отримали ім'я певного листа
              var values = helper.Services.GetStudentDataFromTestResults(sheetName: helper.Services.SheetService.Spreadsheets.Get(helper.Services.Sheets[1].FileID).Execute().Sheets[0].Properties.Title, sheetFileId: helper.Services.Sheets[1].FileID);
@@ -171,8 +179,8 @@ namespace TestForm2
 
 
 
-            var sheetreq = helper.Services.SheetService.Spreadsheets.Get(fileid);
-            var respSheetreq = sheetreq.Execute();
+            //var sheetreq = helper.Services.SheetService.Spreadsheets.Get(fileid);
+            //var respSheetreq = sheetreq.Execute();
             //
             /*
             int j;
