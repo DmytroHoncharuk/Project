@@ -157,7 +157,6 @@ namespace TestForm2
                 newlist.Add(helper.Services.GetStudentDataFromDataBase(sheetName: helper.Services.SheetService.Spreadsheets.Get(helper.Services.Sheets[0].FileID).Execute().Sheets[i].Properties.Title, sheetFileId: helper.Services.Sheets[0].FileID));
             }
             
-            int acs = 6 + 5;
             //////////////////////
             // var ae = helper.services.SheetService.Spreadsheets.Get(helper.services.Sheets[0].FileID); // або.Title так можна отримати ім'я та id усієї таблиці
             // var aq = helper.services.SheetService.Spreadsheets.Get(helper.services.Sheets[0].FileID).Execute().Sheets[1].Properties.Title; // отримали ім'я певного листа
