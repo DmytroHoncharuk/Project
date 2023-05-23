@@ -2,23 +2,19 @@
 using Google.Apis.Drive.v3;
 using Google.Apis.Sheets.v4;
 using Google.Apis.Sheets.v4.Data;
-using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace TestForm2
 {
     public class Services
     {
-        private Form2 form; 
+        private Form2 form;
         private SheetsService sheetService;
         public DriveService driveService;
         private UserCredential credentials;
-        private IList<Google.Apis.Drive.v3.Data.File> files; 
+        private IList<Google.Apis.Drive.v3.Data.File> files;
         private List<Sheet> sheets = new List<Sheet>();
 
         public List<Sheet> Sheets
@@ -31,11 +27,11 @@ namespace TestForm2
             {
                 sheets = value;
             }
-        
+
         }
         public IList<Google.Apis.Drive.v3.Data.File> Files
         { get; set; }
-        
+
         public SheetsService SheetService
         {
             get
@@ -50,19 +46,19 @@ namespace TestForm2
                 return this.driveService;
             }
         }
-        
-        public Services(DriveService driveService , SheetsService sheetService, Form2 form  ) // не працює 
+
+        public Services(DriveService driveService, SheetsService sheetService, Form2 form) // не працює 
         {
-        this.sheetService = sheetService;
-        this.driveService = driveService;
-          Files  = new List<Google.Apis.Drive.v3.Data.File>();
-            this.form = form; 
+            this.sheetService = sheetService;
+            this.driveService = driveService;
+            Files = new List<Google.Apis.Drive.v3.Data.File>();
+            this.form = form;
         }
 
-        public IList<Google.Apis.Drive.v3.Data.File>  GetFiles()
+        public IList<Google.Apis.Drive.v3.Data.File> GetFiles()
         {
             IList<Google.Apis.Drive.v3.Data.File> files = driveService.Files.List().Execute().Files;
-            
+
             return files;
         }
         public void VerifySheets()
@@ -70,7 +66,7 @@ namespace TestForm2
             foreach (TextBox textBox in form.textBoxes)
             {
 
-                
+
             }
         }
 
@@ -87,7 +83,7 @@ namespace TestForm2
             }
             else
             {
-                form.textBoxes[index].BackColor = System.Drawing.Color.LightCoral; 
+                form.textBoxes[index].BackColor = System.Drawing.Color.LightCoral;
             }
 
         }
@@ -100,7 +96,7 @@ namespace TestForm2
                 {
                     sheetId = file.Id;
                     return true;
-                    
+
                 }
             }
             sheetId = "";
@@ -119,7 +115,7 @@ namespace TestForm2
             var studentNickName = GetListRequest(rangeForNickName, sheetFileId);
             Tools.DeleteAt(studentNickName);
             var studentGroup = GetListRequest(rangeForNumberOfGroup, sheetFileId);
-            List<List<string>> list_Of_Student_Data_Test = new List<List<string>>() { studentPoints, studentName, studentNickName, studentGroup };
+            List<List<string>> list_Of_Student_Data_Test = new List<List<string>>() { studentName, studentNickName, studentPoints, studentGroup };
             return list_Of_Student_Data_Test;
         }
         internal List<List<string>> GetStudentDataFromDataBase(string sheetName, string sheetFileId)
@@ -129,6 +125,8 @@ namespace TestForm2
             var studentName = GetListRequest(rangeForName, sheetFileId);
             var studentNickName = GetListRequest(rangeForNickName, sheetFileId);
             Tools.DeleteAt(studentNickName);
+            studentName.Insert(0, sheetName);
+            studentNickName.Insert(0, sheetName);
             List<List<string>> list_Of_Student_Name_and_Nickname_DB = new List<List<string>>() { studentName, studentNickName };
             return list_Of_Student_Name_and_Nickname_DB;
         }

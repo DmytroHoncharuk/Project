@@ -164,9 +164,12 @@ namespace TestForm2
                 testResults.Add(helper.Services.GetStudentDataFromTestResults(sheetName: helper.Services.SheetService.Spreadsheets.Get(helper.Services.Sheets[i].FileID).Execute().Sheets[0].Properties.Title, sheetFileId: helper.Services.Sheets[i].FileID));
    
             }
-            for (int i = 0; i  < helper.Services.Sheets.Count; i++)
+            for (int i = 0; i  < testResults.Count; i++)
             {
+                for (int j = 0; j < testResults[i].Count; j++)
+                {
 
+                }
             }
             //////////////////////
             var abf = 5 + 3;
